@@ -1,6 +1,6 @@
 import React from "react";
-import ModuleListComponent from "./ModuleListComponent";
-import LessonTabsComponent from "./LessonTabsComponent";
+import ModuleListComponent from "../ModuleListComponent";
+import LessonTabsComponent from "../LessonTabsComponent";
 import {Link} from "react-router-dom";
 
 // stateless component

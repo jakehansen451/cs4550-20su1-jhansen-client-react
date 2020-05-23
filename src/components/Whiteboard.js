@@ -1,6 +1,6 @@
 import React from 'react'
 import CourseManagerContainer from "../containers/CourseManager/CourseManagerContainer";
-import CourseEditorComponent from "./CourseEditorComponent";
+import CourseEditorComponent from "./CourseEditor/CourseEditorComponent";
 import {BrowserRouter, Route} from "react-router-dom";
 import HomeComponent from "./Home/HomeComponent";
 import LoginComponent from "./LoginComponent";

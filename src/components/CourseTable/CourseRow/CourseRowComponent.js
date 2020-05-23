@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import courseService from '../services/CourseService'
+import courseService from '../../../services/CourseService'
 
 export default class CourseRowComponent extends React.Component {
   state = {
