@@ -56,3 +56,8 @@ tr td:last-child{
 .wbdv-delete {
   width: max-content;
 }
+
+.search-chunk {
+  display: inline-flex;
+  align-items: center;
+}

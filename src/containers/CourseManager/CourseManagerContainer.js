@@ -48,6 +48,7 @@ class CourseManagerContainer extends React.Component {
       .then(theActualNewCourse =>
           this.setState((prevState) => {
             return {
+              newCourseTitle: '',
               courses: [
                 ...prevState.courses,
                 theActualNewCourse
@@ -96,6 +97,7 @@ class CourseManagerContainer extends React.Component {
                       <FontAwesomeIcon
                           icon={faTh}
                           onClick={() => this.setLayout('grid')}
+                          className='icon-link float-right'
                       >
                         Grid
                       </FontAwesomeIcon>

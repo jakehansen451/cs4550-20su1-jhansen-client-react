@@ -31,7 +31,7 @@ class Whiteboard extends React.Component {
                 component={CourseManagerContainer}/>
 
             <Route
-                path='/editor'
+                path='/editor/*'
                 exact={true}
                 component={CourseEditorComponent}/>
 

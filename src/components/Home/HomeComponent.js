@@ -9,23 +9,23 @@ const HomeComponent = () =>
           Whiteboard
         </h1>
       </div>
-      <Link to='/table/courses'>
+      <Link to='/table/courses/'>
         Browse course offerings
       </Link>
       <br/>
-      <Link to='/login'>
+      <Link to='/login/'>
         Login
       </Link>
       <br/>
-      <Link to='/register'>
+      <Link to='/register/'>
         Need an account? Register here
       </Link>
       <br/>
-      <Link to='/profile'>
+      <Link to='/profile/'>
         View your profile
       </Link>
       <br/>
-      <Link to='/editor'>
+      <Link to='/editor/'>
         Edit courses
       </Link>
       <br/>

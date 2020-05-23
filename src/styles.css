@@ -1,5 +1,9 @@
 :root {
   --max-width: 1200px;
+  --screen-m: 920px;
+  --screen-s: 720px;
+  --screen-xs: 520px;
+  --screen-xxs: 320px;
   --text-color: #212529;
   --faded-light-green: rgba(210, 238, 172, 0.5);
   --lightest-green: #aecb91;
@@ -33,6 +37,7 @@ body {
 }
 
 .wbdv-field {
+  height: 2rem;
   border-radius: 3px;
   border: 1px solid var(--green);
   background: #F9F9F9;
@@ -56,6 +61,7 @@ body {
 
 .title-bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin: 0 0 1rem 0;
@@ -80,6 +86,18 @@ body {
 
 .row {
   margin: 0;
+}
+
+.btn {
+  height: 2rem;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .green-btn {

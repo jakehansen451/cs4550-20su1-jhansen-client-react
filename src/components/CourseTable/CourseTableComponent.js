@@ -1,6 +1,6 @@
 import React from "react";
+import './CourseTableComponent.css';
 import CourseRowComponent from "./CourseRow/CourseRowComponent";
-import courseService from "../../services/CourseService";
 
 
 export default class CourseTableComponent extends React.Component {
@@ -13,18 +13,17 @@ export default class CourseTableComponent extends React.Component {
     return (
         <div className="class-table">
           <div className="title-bar course-list-table-header">
-            <div>
-              <h1>Course List</h1>
-              {this.gridButton}
-            </div>
-            <div className="add-course-chunk">
+            <h1>Course List</h1>
+            <div className="search-chunk">
               <input
-                  className="wbdv-field course-list-search-input"
+                  className="wbdv-field"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
               />
-              <button className="btn green-btn" type="submit">Search</button>
+              <button className="btn green-btn course-search-button" type="submit">
+                Search
+              </button>
             </div>
           </div>
 
@@ -36,17 +35,7 @@ export default class CourseTableComponent extends React.Component {
               <th className="wbdv-header wbdv-owner">Owned By</th>
               <th className="wbdv-header wbdv-last-modified">Modified</th>
               <th className="wbdv-header wbdv-sort">
-                <div className="d-flex justify-content-between">
-                  <button
-                      className="fa fa-sort table-button icon-link"
-                  />
-                  <button
-                      className="fa fa-th table-button icon-link wbdv-button wbdv-grid-layout"
-                  />
-                  <button
-                      className="fa fa-bars table-button icon-link wbdv-button wbdv-list-layout"
-                  />
-                </div>
+                {this.gridButton}
               </th>
             </tr>
             </thead>
