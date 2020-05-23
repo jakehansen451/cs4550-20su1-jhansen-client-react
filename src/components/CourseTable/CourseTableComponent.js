@@ -6,7 +6,6 @@ import courseService from "../../services/CourseService";
 export default class CourseTableComponent extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.children);
     this.gridButton = props.children;
   }
 
@@ -14,8 +13,10 @@ export default class CourseTableComponent extends React.Component {
     return (
         <div className="class-table">
           <div className="title-bar course-list-table-header">
-            <h1>Course List</h1>
-            {this.gridButton}
+            <div>
+              <h1>Course List</h1>
+              {this.gridButton}
+            </div>
             <div className="add-course-chunk">
               <input
                   className="wbdv-field course-list-search-input"
@@ -37,11 +38,14 @@ export default class CourseTableComponent extends React.Component {
               <th className="wbdv-header wbdv-sort">
                 <div className="d-flex justify-content-between">
                   <button
-                      className="fa fa-sort table-button icon-link"></button>
+                      className="fa fa-sort table-button icon-link"
+                  />
                   <button
-                      className="fa fa-th table-button icon-link wbdv-button wbdv-grid-layout"></button>
+                      className="fa fa-th table-button icon-link wbdv-button wbdv-grid-layout"
+                  />
                   <button
-                      className="fa fa-bars table-button icon-link wbdv-button wbdv-list-layout"></button>
+                      className="fa fa-bars table-button icon-link wbdv-button wbdv-list-layout"
+                  />
                 </div>
               </th>
             </tr>

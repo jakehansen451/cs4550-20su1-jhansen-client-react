@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft, faTh } from '@fortawesome/free-solid-svg-icons';
+
 import CourseTableComponent from "../../components/CourseTable/CourseTableComponent";
 import CourseGridComponent from "../../components/CourseGrid/CourseGridComponent";
 import courseService from "../../services/CourseService";
@@ -55,8 +56,6 @@ class CourseManagerContainer extends React.Component {
           }));
 
   render() {
-    console.log(this.props);
-
     return(
         <div>
           <nav className="navbar fixed-top course-list-search-navbar">
@@ -94,9 +93,12 @@ class CourseManagerContainer extends React.Component {
             <div>
               <CourseTableComponent
                   children={
-                      <button onClick={() => this.setLayout('grid')}>
+                      <FontAwesomeIcon
+                          icon={faTh}
+                          onClick={() => this.setLayout('grid')}
+                      >
                         Grid
-                      </button>
+                      </FontAwesomeIcon>
                   }
                   deleteCourse={this.deleteCourse}
                   courses={this.state.courses}/>

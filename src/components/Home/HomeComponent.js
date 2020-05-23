@@ -18,15 +18,15 @@ const HomeComponent = () =>
       </Link>
       <br/>
       <Link to='/register'>
-        Registration
+        Need an account? Register here
       </Link>
       <br/>
       <Link to='/profile'>
-        Profile
+        View your profile
       </Link>
       <br/>
       <Link to='/editor'>
-        Course Editor
+        Edit courses
       </Link>
       <br/>
     </div>;

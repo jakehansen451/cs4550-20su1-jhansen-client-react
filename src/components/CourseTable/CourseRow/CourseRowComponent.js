@@ -1,21 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import courseService from '../../../services/CourseService'
 
 export default class CourseRowComponent extends React.Component {
   state = {
     editing: false,
     course: this.props.course
-  }
+  };
 
   setEditing = (editing) =>
-      this.setState({editing: editing})
+      this.setState({editing: editing});
 
   ok = () =>
       courseService.updateCourse(
           this.state.course._id,
           this.state.course)
-      .then(status => this.setEditing(false))
+      .then(status => this.setEditing(false));
 
   updateCourseTitle = (newTitle) =>
       this.setState(prevState => ({
@@ -23,28 +25,39 @@ export default class CourseRowComponent extends React.Component {
           ...prevState.course,
           title: newTitle
         }
-      }))
+      }));
+
+  courseName = () =>
+      <td>
+        {this.state.editing ?
+            <input
+                className="form-control"
+                onChange={(event) => this.updateCourseTitle(event.target.value)}
+                value={this.state.course.title}/> :
+            <Link to={`/editor/${this.state.course._id}`}>
+              {this.state.course.title}
+            </Link>}
+      </td>;
 
   render() {
     return(
-        <tr className={this.state.editing ? 'table-primary' : ''}>
-          <td>
-            {
-              !this.state.editing &&
-              <Link to={`/editor/${this.state.course._id}`}>
-                {this.state.course.title}
-              </Link>
-            }
-            {
-              this.state.editing &&
-              <input
-                  className="form-control"
-                  onChange={(event) => this.updateCourseTitle(event.target.value)}
-                  value={this.state.course.title}/>
-            }
+        <tr>
+          <td className="course-table-icon-row">
+            <Link to={`/editor/${this.state.course._id}`} >
+              <FontAwesomeIcon
+                  className="icon-link"
+                  icon={faEdit}
+              />
+            </Link>
           </td>
-          <td>{this.state.course.owner}</td>
-          <td>{this.state.course.modified}</td>
+          {this.courseName()}
+        </tr>
+    )
+  }
+}
+
+/*
+<tr className={this.state.editing ? 'table-primary' : ''}>
           <td>
             {
               !this.state.editing &&
@@ -68,6 +81,4 @@ export default class CourseRowComponent extends React.Component {
             }
           </td>
         </tr>
-    )
-  }
-}
+ */
