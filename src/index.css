@@ -1,3 +1,27 @@
+:root {
+  --max-width: 1200px;
+  --text-color: #212529;
+  --faded-light-green: rgba(210, 238, 172, 0.5);
+  --lightest-green: #aecb91;
+  --lighter-green: #9baf86;
+  --green: #6d7f5c;
+  --dark-green: #344126;
+  --darker-green: #181e13;
+  --white: #FFFFFF;
+  --lightest-grey: #dee2e6;
+  --very-light-grey: #cdccd1;
+  --lighter-grey: #9f9ea4;
+  --light-grey: #6b6d70;
+  --grey: #4d4d50;
+  --dark-grey: #35353b;
+  --darker-grey: #25242d;
+  --darkest-grey: #19191c;
+  --light-red: #fa6c68;
+  --red: #CD5C5C;
+  --dark-red: #8B0000;
+  --darker-red: #590000;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +29,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  padding: 25px 50px;
+  background-color: var(--white);
+  max-width: var(--max-width);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
