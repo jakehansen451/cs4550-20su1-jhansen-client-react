@@ -1,5 +1,5 @@
 body {
-  padding-top: 75px;
+  padding-top: 77px;
 }
 
 .course-list-search-navbar {
@@ -13,11 +13,6 @@ body {
   border: 1px solid var(--lighter-grey);
 }
 
-.navbar-search-chunk {
-  display: inline-flex;
-  flex-wrap: nowrap;
-}
-
 .wbdv-hamburger {
   background-color: inherit;
   border: none;
@@ -26,18 +21,6 @@ body {
 }
 
 .course-list-search-input {
-  margin: 0 1rem;
-}
-
-.wbdv-new-course {
-  background: inherit;
-  background-color: rgba(255, 255, 255, 0.75);
-}
-
-.wbdv-add-course {
-  width: max-content;
-  font-size: xx-large;
-  line-height: 0.5;
   margin: 0 1rem;
 }
 
@@ -85,7 +68,26 @@ body {
   margin: 0.25rem;
 }
 
+.search-chunk {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding-top: 117px;
+  }
+}
+
 @media screen and (max-width: 390px) {
+  body {
+    padding-top: 149px;
+  }
+
+  .search-chunk {
+    flex-wrap: wrap;
+  }
+
   .course-search-button {
     margin: 0.25rem 0;
   }

@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import HomeComponent from "./Home/HomeComponent";
 import LoginComponent from "./LoginComponent";
 
-class Whiteboard extends React.Component {
+class WhiteboardComponent extends React.Component {
   render() {
     return(
         <BrowserRouter>
@@ -41,4 +41,4 @@ class Whiteboard extends React.Component {
   }
 }
 
-export default Whiteboard
+export default WhiteboardComponent

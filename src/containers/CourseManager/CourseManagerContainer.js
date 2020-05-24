@@ -13,7 +13,6 @@ class CourseManagerContainer extends React.Component {
   state = {
     layout: this.props.match.params.layout,
     courses: [],
-    newCourseTitle: '',
     sort: 'date-desc',
   };
 
@@ -41,31 +40,6 @@ class CourseManagerContainer extends React.Component {
       .then(status => this.setState(prevState => ({
         courses: prevState.courses.filter(course => course !== courseToDelete)
       })));
-
-  addCourse = (title) => {
-    if (this.state.newCourseTitle !== '') {
-      courseService.createCourse({
-        title: title,
-        owner: 'me',
-        modified: (new Date()).toISOString()
-      })
-      .then(theActualNewCourse =>
-          this.setState((prevState) => {
-            return {
-              newCourseTitle: '',
-              courses: [
-                ...prevState.courses,
-                {
-                  ...theActualNewCourse,
-                  modified: DateUtils.toLocalDateTime(theActualNewCourse.modified)
-                }
-              ]
-            }
-          }));
-    } else {
-      alert('New course title cannot be empty.');
-    }
-  };
 
 
   sortTitle = () => this.setState({
@@ -101,6 +75,23 @@ class CourseManagerContainer extends React.Component {
     return this.state.courses.sort(sortFn);
   };
 
+  refreshCourses = () => {
+    courseService.findAllCourses()
+    .then((actualCourses => {
+      this.setState(prevState => (
+          {
+            ...prevState,
+            courses: actualCourses.map(course => (
+                {
+                  ...course,
+                  modified: DateUtils.toLocalDateTime(course.modified)
+                }
+                ))
+          }
+      ));
+    }))
+  };
+
   render() {
     return(
         <div>
@@ -112,28 +103,25 @@ class CourseManagerContainer extends React.Component {
               <button
                   className="fa fa-bars icon-link wbdv-field wbdv-hamburger"
               />
-              <a className="navbar-brand wbdv-label wbdv-course-manager">Browse
-                Courses</a>
+              <div className="navbar-brand">
+                Browse Courses
+              </div>
             </div>
-            <form className="navbar-search-chunk">
+            <div className="search-chunk">
               <input
-                  className="wbdv-field wbdv-new-course"
-                  id="add-course-title"
-                  type="text"
-                  onChange={(event) => this.setState({
-                    newCourseTitle: event.target.value
-                  })}
-                  value={this.state.newCourseTitle}
-                  placeholder="Add a course"
-                  title="Add the title of the new course"
+                  className="wbdv-field"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
               />
-              <a className="wbdv-button wbdv-add-course icon-link"
-                 href="#"
-                 onClick={ () => this.addCourse(this.state.newCourseTitle) }
-              >+</a>
-            </form>
+              <button
+                  className="wbdv-button green-btn course-search-button"
+                  type="submit"
+              >
+                Search
+              </button>
+            </div>
           </nav>
-          <br/>
           {
             this.state.layout === 'table' &&
             <div>
@@ -153,6 +141,7 @@ class CourseManagerContainer extends React.Component {
                   deleteCourse={this.deleteCourse}
                   courses={this.sortCourses()}
                   sort={this.state.sort}
+                  refreshCourses={this.refreshCourses}
               />
             </div>
           }

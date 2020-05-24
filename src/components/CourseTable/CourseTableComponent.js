@@ -3,9 +3,28 @@ import './CourseTableComponent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import CourseRowComponent from "./CourseRow/CourseRowComponent";
+import courseService from "../../services/CourseService";
+import '../../styles.css';
 
 
 export default class CourseTableComponent extends React.Component {
+  state = {
+    newCourseTitle: '',
+  };
+
+  addCourse = (title) => {
+    if (this.state.newCourseTitle !== '') {
+      courseService.createCourse({
+        title: title,
+        owner: 'me',
+        modified: (new Date()).toISOString()
+      })
+      .then(theActualNewCourse => this.props.refreshCourses());
+    } else {
+      alert('New course title cannot be empty.');
+    }
+  };
+
   sortIcon = () =>
       <FontAwesomeIcon
           className='sort-icon'
@@ -17,20 +36,22 @@ export default class CourseTableComponent extends React.Component {
         <div className="class-table">
           <div className="title-bar course-list-table-header">
             <h1>Course List</h1>
-            <div className="search-chunk">
+            <form className="navbar-search-chunk">
               <input
-                  className="wbdv-field"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
+                  className="wbdv-field wbdv-new-course"
+                  id="add-course-title"
+                  type="text"
+                  onChange={(event) => this.setState({
+                    newCourseTitle: event.target.value
+                  })}
+                  value={this.state.newCourseTitle}
+                  placeholder="Add a course"
+                  title="Add the title of the new course"
               />
-              <button
-                  className="wbdv-button green-btn course-search-button"
-                  type="submit"
-              >
-                Search
-              </button>
-            </div>
+              <div className="wbdv-button wbdv-add-course icon-link"
+                   onClick={ () => this.addCourse(this.state.newCourseTitle) }
+              >+</div>
+            </form>
           </div>
           <table className="table table-striped course-table">
             <thead>

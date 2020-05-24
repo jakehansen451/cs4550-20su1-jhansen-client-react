@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Whiteboard from "./components/Whiteboard";
+import WhiteboardComponent from "./components/WhiteboardComponent";
 
 function App() {
   return (
     <div>
       <header>
-        <Whiteboard />
+        <WhiteboardComponent />
       </header>
     </div>
   );
