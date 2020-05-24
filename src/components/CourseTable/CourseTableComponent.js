@@ -25,11 +25,12 @@ export default class CourseTableComponent extends React.Component {
     }
   };
 
-  sortIcon = () =>
-      <FontAwesomeIcon
-          className='sort-icon'
-          icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
-      />;
+  sortIcon = () => <FontAwesomeIcon
+      className='sort-icon'
+      icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
+  />;
+
+  refreshCourses = () => this.props.refreshCourses();
 
   render() {
     return (
@@ -84,6 +85,7 @@ export default class CourseTableComponent extends React.Component {
             {
               this.props.courses.map(course =>
                   <CourseRowComponent
+                      refreshCourses={this.refreshCourses}
                       deleteCourse={this.props.deleteCourse}
                       key={course._id}
                       course={course}

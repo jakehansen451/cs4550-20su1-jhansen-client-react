@@ -10,6 +10,12 @@
   }
 }
 
+@media screen and (max-width: 405px) {
+  .wbdv-button-row {
+    flex-wrap: wrap;
+  }
+}
+
 .wbdv-delete {
   width: max-content;
   margin-left: 0.5rem;
@@ -24,4 +30,8 @@
 
 .highlighted {
   background-color: var(--lighter-green)!important;
+}
+
+.course-name-input {
+  width: 100%;
 }

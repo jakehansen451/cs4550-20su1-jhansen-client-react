@@ -78,17 +78,13 @@ class CourseManagerContainer extends React.Component {
   refreshCourses = () => {
     courseService.findAllCourses()
     .then((actualCourses => {
-      this.setState(prevState => (
-          {
+      this.setState(prevState => ({
             ...prevState,
-            courses: actualCourses.map(course => (
-                {
+            courses: actualCourses.map(course => ({
                   ...course,
                   modified: DateUtils.toLocalDateTime(course.modified)
-                }
-                ))
-          }
-      ));
+            }))
+      }));
     }))
   };
 

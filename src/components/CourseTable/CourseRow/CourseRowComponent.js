@@ -3,50 +3,47 @@ import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import courseService from '../../../services/CourseService';
-import DateUtils from '../../../utils/DateUtils';
 import './CourseRowComponent.css';
 
 export default class CourseRowComponent extends React.Component {
   state = {
     editing: false,
-    course: this.props.course
+    course: this.props.course,
+    newCourseTitle: this.props.course.title,
+  };
+
+  componentDidUpdate = () => {
+    if (this.state.course !== this.props.course) {
+      this.setState({
+        ...this.sate,
+        course: this.props.course
+      })
+    }
   };
 
   setEditing = (editing) =>
-      this.setState({editing: editing});
+      this.setState({...this.state, editing: editing, newCourseTitle: this.state.course.title});
 
   saveCourseRow = () =>
       courseService.updateCourse(
           this.state.course._id,
           {...this.state.course,
+            title: this.state.newCourseTitle,
             modified: (new Date()).toISOString()
           })
       .then(status => {
         this.setEditing(false);
-        courseService.findCourseById(this.state.course._id)
-        .then((actualCourse) => this.setState(
-            {...this.state,
-              course: {
-                ...actualCourse,
-                modified: DateUtils.toLocalDateTime(actualCourse.modified)
-              }
-            }))
+        this.props.refreshCourses();
       });
-
-  updateCourseTitle = (newTitle) =>
-      this.setState(prevState => ({
-        course: {
-          ...prevState.course,
-          title: newTitle
-        }
-      }));
 
   courseName = () =>
       this.state.editing ?
           <input
-              className="wbdv-field"
-              onChange={(event) => this.updateCourseTitle(event.target.value)}
-              value={this.state.course.title}/> :
+              className="wbdv-field course-name-input"
+              onChange={(event) => this.setState({
+                newCourseTitle: event.target.value
+              })}
+              value={this.state.newCourseTitle}/> :
           <Link to={`/editor/${this.state.course._id}`}>
             {this.state.course.title}
           </Link>;
@@ -81,12 +78,21 @@ export default class CourseRowComponent extends React.Component {
                     Edit
                   </button>
             }
-            <button
-                className="float-right red-btn wbdv-button wbdv-delete"
-                onClick={() => this.props.deleteCourse(this.props.course)}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </button>
+            {
+              this.state.editing ?
+                  <button
+                    className='float-right red-btn wbdv-button wbdv-delete'
+                    onClick={() => this.setEditing(false)}
+                  >
+                    Cancel
+                  </button> :
+                  <button
+                      className="float-right red-btn wbdv-button wbdv-delete"
+                      onClick={() => this.props.deleteCourse(this.props.course)}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+            }
           </td>
         </tr>
     )
