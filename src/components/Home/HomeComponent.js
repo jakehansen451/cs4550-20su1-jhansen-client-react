@@ -9,7 +9,7 @@ const HomeComponent = () =>
           Whiteboard
         </h1>
       </div>
-      <Link to='/table/courses/'>
+      <Link to='/courses/table/'>
         Browse course offerings
       </Link>
       <br/>

@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const CourseEditorComponent = () => {
   return(
       <div>
-        <Link to="/courses">
+        <Link to="/courses/">
           Back
         </Link>
         <h2>Course Editor</h2>

@@ -32,7 +32,7 @@ class CourseManagerContainer extends React.Component {
   }
 
   setLayout = (layout) => {
-    this.props.history.push(`/${layout}/courses`)
+    this.props.history.push(`/courses/${layout}/`)
   };
 
   deleteCourse = (courseToDelete) =>

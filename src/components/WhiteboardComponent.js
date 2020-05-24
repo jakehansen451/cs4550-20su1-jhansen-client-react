@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseManagerContainer from "../containers/CourseManager/CourseManagerContainer";
 import CourseEditorComponent from "./CourseEditor/CourseEditorComponent";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Redirect} from "react-router-dom";
 import HomeComponent from "./Home/HomeComponent";
 import LoginComponent from "./LoginComponent";
 
@@ -10,29 +10,42 @@ class WhiteboardComponent extends React.Component {
     return(
         <BrowserRouter>
           <div>
+            <Route
+                path="/:url*"
+                exact
+                strict
+                render={
+                  props => <Redirect to={`${props.location.pathname}/`}/>
+                }
+            />
+
             <Route path="/login" exact={true} component={LoginComponent}/>
 
             {/*TODO: port over registraion, profile components*/}
 
             <Route
                 path='/'
-                exact={true}
+                exact
                 component={HomeComponent}
             />
 
             <Route
-                path='/courses'
-                exact={true}
-                component={CourseManagerContainer}/>
+                path='/courses/'
+                exact
+                strict
+                render={
+                  props => <Redirect to={`${props.location.pathname}table/`}/>
+                }
+            />
 
             <Route
-                path='/:layout/courses'
-                exact={true}
+                path='/courses/:layout/'
+                exact
                 component={CourseManagerContainer}/>
 
             <Route
                 path='/editor/*'
-                exact={true}
+                exact
                 component={CourseEditorComponent}/>
 
           </div>
