@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleLeft, faTh } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleLeft, faTh, faBars } from '@fortawesome/free-solid-svg-icons';
 import CourseTableComponent from "../../components/CourseTable/CourseTableComponent";
 import CourseGridComponent from "../../components/CourseGrid/CourseGridComponent";
 import courseService from "../../services/CourseService";
@@ -41,21 +41,26 @@ class CourseManagerContainer extends React.Component {
         courses: prevState.courses.filter(course => course !== courseToDelete)
       })));
 
+  sortTitle = (event, dir = '') => {
+    let sort;
+    if (dir) sort = 'title-'.concat(dir);
+    else sort = this.state.sort === 'title-desc' ? 'title-asc' : 'title-desc';
+    this.setState({...this.state, sort});
+  };
 
-  sortTitle = () => this.setState({
-    ...this.state,
-    sort: this.state.sort === 'title-desc' ? 'title-asc' : 'title-desc'
-  });
+  sortOwner = (event, dir = '') => {
+    let sort;
+    if (dir) sort = 'owner-'.concat(dir);
+    else  sort = this.state.sort === 'owner-desc' ? 'owner-asc' : 'owner-desc';
+    this.setState({...this.state, sort});
+  };
 
-  sortOwner = () => this.setState({
-    ...this.state,
-    sort: this.state.sort === 'owner-desc' ? 'owner-asc' : 'owner-desc'
-  });
-
-  sortDate = () => this.setState({
-    ...this.state,
-    sort: this.state.sort === 'date-desc' ? 'date-asc' : 'date-desc'
-  });
+  sortDate = () => {
+    this.setState({
+      ...this.state,
+      sort: this.state.sort === 'date-desc' ? 'date-asc' : 'date-desc',
+    });
+  };
 
   sortCourses = () => {
     let sortFn;
@@ -126,10 +131,8 @@ class CourseManagerContainer extends React.Component {
                     <FontAwesomeIcon
                         icon={faTh}
                         onClick={() => this.setLayout('grid')}
-                        className='icon-link float-right'
-                    >
-                      Grid
-                    </FontAwesomeIcon>
+                        className='icon-link switch-layout-btn'
+                    />
                   }
                   sortTitle={this.sortTitle}
                   sortOwner={this.sortOwner}
@@ -144,12 +147,22 @@ class CourseManagerContainer extends React.Component {
           {
             this.state.layout === 'grid' &&
             <div>
-              <button
-                  onClick={() =>
-                      this.setLayout('table')}>
-                Table
-              </button>
-              <CourseGridComponent courses={this.state.courses}/>
+              <CourseGridComponent
+                  tableButton={
+                    <FontAwesomeIcon
+                        icon={faBars}
+                        onClick={() => this.setLayout('table')}
+                        className='icon-link switch-layout-btn'
+                    />
+                  }
+                  sortTitle={this.sortTitle}
+                  sortOwner={this.sortOwner}
+                  sortDate={this.sortDate}
+                  deleteCourse={this.deleteCourse}
+                  courses={this.sortCourses()}
+                  sort={this.state.sort}
+                  refreshCourses={this.refreshCourses}
+              />
             </div>
           }
         </div>

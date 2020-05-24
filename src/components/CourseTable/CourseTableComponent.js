@@ -1,10 +1,10 @@
 import React from "react";
-import './CourseTableComponent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import CourseRowComponent from "./CourseRow/CourseRowComponent";
 import courseService from "../../services/CourseService";
 import '../../styles.css';
+import './CourseTableComponent.css';
 
 
 export default class CourseTableComponent extends React.Component {
@@ -33,9 +33,9 @@ export default class CourseTableComponent extends React.Component {
   render() {
     return (
         <div className="class-table">
-          <div className="title-bar course-list-table-header">
-            <h1>Course List</h1>
-            <form className="navbar-search-chunk">
+          <div className="title-bar course-table-header">
+            <h2>Courses</h2>
+            <form className="add-course-chunk">
               <input
                   className="wbdv-field wbdv-new-course"
                   id="add-course-title"
@@ -75,21 +75,25 @@ export default class CourseTableComponent extends React.Component {
                   </div>
                 </th>
                 <th>
-                  {this.props.gridButton}
+                  <div className='grid-btn-block'>
+                    <label htmlFor='grid-btn' className='grid-btn-label'>
+                      Grid view:
+                    </label>
+                    <div id='grid-btn' className='grid-btn'>
+                      {this.props.gridButton}
+                    </div>
+                  </div>
                 </th>
               </tr>
             </thead>
             <tbody>
-            {
-              this.props.courses.map(course =>
-                  <CourseRowComponent
-                      refreshCourses={this.props.refreshCourses}
-                      deleteCourse={this.props.deleteCourse}
-                      key={course._id}
-                      course={course}
-                  />
-              )
-            }
+            {this.props.courses.map(course =>
+                <CourseRowComponent
+                    refreshCourses={this.props.refreshCourses}
+                    deleteCourse={this.props.deleteCourse}
+                    key={course._id}
+                    course={course}/>
+            )}
             </tbody>
           </table>
         </div>

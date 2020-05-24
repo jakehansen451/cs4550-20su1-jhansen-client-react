@@ -24,35 +24,18 @@ body {
   margin: 0 1rem;
 }
 
-.course-list-table-header {
-  background-color: var(--lightest-green);
-  padding: 0.5rem;
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
-}
-
 .class-table {
   border: 1px solid var(--green);
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
 
-.course-table {
-  margin-bottom: 0;
-}
-
-.table-button {
-  background-color: inherit;
-  border: none;
-  width: max-content;
+.switch-layout-btn {
+  font-size: large;
 }
 
 .wbdv-icon {
   font-weight: normal;
-}
-
-.course-table-icon-row {
-  text-align: center;
 }
 
 .title-link {

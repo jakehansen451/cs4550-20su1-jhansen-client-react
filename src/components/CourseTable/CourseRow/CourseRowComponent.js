@@ -51,7 +51,7 @@ export default class CourseRowComponent extends React.Component {
   render() {
     return(
         <tr className={this.state.editing ? 'highlighted' : ''}>
-          <td className="course-table-icon-row">
+          <td>
             <Link to={`/editor/${this.state.course._id}`} >
               <FontAwesomeIcon
                   className="icon-link"

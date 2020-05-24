@@ -23,7 +23,7 @@
 }
 
 .highlighted {
-  background-color: var(--lighter-green)!important;
+  background-color: var(--lightest-green)!important;
 }
 
 .course-name-input {

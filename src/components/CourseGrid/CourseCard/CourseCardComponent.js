@@ -2,7 +2,7 @@ import React from 'react';
 import courseService from "../../../services/CourseService";
 import DateUtils from "../../../utils/DateUtils";
 
-export default class CourseCardComponent {
+export default class CourseCardComponent extends React.Component {
   state = {
     editing: false,
     course: this.props.course
@@ -39,8 +39,8 @@ export default class CourseCardComponent {
 
   render() {
     return (
-        <div>
-          <h1>Course card</h1>
+        <div className='grid-item'>
+          {this.props.course.title}
         </div>
     )};
 }
