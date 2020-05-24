@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faPencilAlt, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import courseService from '../../../services/CourseService';
 import './CourseRowComponent.css';
 
@@ -69,13 +69,13 @@ export default class CourseRowComponent extends React.Component {
                       className="wbdv-button green-btn"
                       onClick={this.saveCourseRow}
                   >
-                    Save
+                    <FontAwesomeIcon icon={faCheck}/>
                   </button> :
                   <button
                       className={"wbdv-button green-btn"}
                       onClick={() => this.setEditing(true)}
                   >
-                    Edit
+                    <FontAwesomeIcon icon={faPencilAlt}/>
                   </button>
             }
             {
@@ -84,7 +84,7 @@ export default class CourseRowComponent extends React.Component {
                     className='float-right red-btn wbdv-button wbdv-delete'
                     onClick={() => this.setEditing(false)}
                   >
-                    Cancel
+                    <FontAwesomeIcon icon={faTimes}/>
                   </button> :
                   <button
                       className="float-right red-btn wbdv-button wbdv-delete"

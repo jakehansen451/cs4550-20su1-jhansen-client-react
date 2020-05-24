@@ -10,12 +10,6 @@
   }
 }
 
-@media screen and (max-width: 405px) {
-  .wbdv-button-row {
-    flex-wrap: wrap;
-  }
-}
-
 .wbdv-delete {
   width: max-content;
   margin-left: 0.5rem;

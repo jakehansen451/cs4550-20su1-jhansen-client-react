@@ -30,8 +30,6 @@ export default class CourseTableComponent extends React.Component {
       icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
   />;
 
-  refreshCourses = () => this.props.refreshCourses();
-
   render() {
     return (
         <div className="class-table">
@@ -85,7 +83,7 @@ export default class CourseTableComponent extends React.Component {
             {
               this.props.courses.map(course =>
                   <CourseRowComponent
-                      refreshCourses={this.refreshCourses}
+                      refreshCourses={this.props.refreshCourses}
                       deleteCourse={this.props.deleteCourse}
                       key={course._id}
                       course={course}
