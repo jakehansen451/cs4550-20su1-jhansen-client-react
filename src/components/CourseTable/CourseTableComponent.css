@@ -31,11 +31,6 @@ tr td:first-child{
   white-space:nowrap;
 }
 
-tr td:last-child{
-  width: 12%;
-  white-space:nowrap;
-}
-
 .wbdv-icon {
   font-weight: normal;
 }
@@ -53,11 +48,25 @@ tr td:last-child{
   text-decoration: none;
 }
 
-.wbdv-delete {
-  width: max-content;
-}
-
 .search-chunk {
   display: inline-flex;
   align-items: center;
+}
+
+@media screen and (max-width: 390px) {
+  .search-chunk {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .wbdv-last-modified {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .wbdv-owner {
+    display: none;
+  }
 }

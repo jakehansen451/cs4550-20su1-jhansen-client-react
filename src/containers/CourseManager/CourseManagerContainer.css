@@ -64,16 +64,6 @@ body {
   width: max-content;
 }
 
-tr td:first-child{
-  width: 6%;
-  white-space:nowrap;
-}
-
-tr td:last-child{
-  width: 12%;
-  white-space:nowrap;
-}
-
 .wbdv-icon {
   font-weight: normal;
 }
@@ -91,10 +81,12 @@ tr td:last-child{
   text-decoration: none;
 }
 
-.wbdv-delete {
-  width: max-content;
+.course-search-button {
+  margin: 0.25rem;
 }
 
-.course-search-button {
-  margin-left: 0.25rem;
+@media screen and (max-width: 390px) {
+  .course-search-button {
+    margin: 0.25rem 0;
+  }
 }

@@ -21,7 +21,10 @@ export default class CourseTableComponent extends React.Component {
                   placeholder="Search"
                   aria-label="Search"
               />
-              <button className="btn green-btn course-search-button" type="submit">
+              <button
+                  className="wbdv-button green-btn course-search-button"
+                  type="submit"
+              >
                 Search
               </button>
             </div>
@@ -31,10 +34,10 @@ export default class CourseTableComponent extends React.Component {
             <thead>
             <tr>
               <th></th>
-              <th className="wbdv-header wbdv-title">Title</th>
-              <th className="wbdv-header wbdv-owner">Owned By</th>
-              <th className="wbdv-header wbdv-last-modified">Modified</th>
-              <th className="wbdv-header wbdv-sort">
+              <th>Title</th>
+              <th className="wbdv-owner">Owned By</th>
+              <th className="wbdv-last-modified">Modified</th>
+              <th>
                 {this.gridButton}
               </th>
             </tr>
