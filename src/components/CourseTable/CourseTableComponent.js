@@ -1,13 +1,16 @@
 import React from "react";
 import './CourseTableComponent.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import CourseRowComponent from "./CourseRow/CourseRowComponent";
 
 
 export default class CourseTableComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.gridButton = props.children;
-  }
+  sortIcon = () =>
+      <FontAwesomeIcon
+          className='sort-icon'
+          icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
+      />;
 
   render() {
     return (
@@ -29,18 +32,32 @@ export default class CourseTableComponent extends React.Component {
               </button>
             </div>
           </div>
-
           <table className="table table-striped course-table">
             <thead>
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th className="wbdv-owner">Owned By</th>
-              <th className="wbdv-last-modified">Modified</th>
-              <th>
-                {this.gridButton}
-              </th>
-            </tr>
+              <tr>
+                <th></th>
+                <th onClick={this.props.sortTitle}>
+                  <div>
+                    Title
+                    {this.props.sort.includes('title') ? this.sortIcon() : null}
+                  </div>
+                </th>
+                <th onClick={this.props.sortOwner} className="wbdv-owner">
+                  <div>
+                    Owned By
+                    {this.props.sort.includes('owner') ? this.sortIcon() : null}
+                  </div>
+                </th>
+                <th onClick={this.props.sortDate} className="wbdv-last-modified">
+                  <div>
+                    Modified
+                    {this.props.sort.includes('date') ? this.sortIcon() : null}
+                  </div>
+                </th>
+                <th>
+                  {this.props.gridButton}
+                </th>
+              </tr>
             </thead>
             <tbody>
             {

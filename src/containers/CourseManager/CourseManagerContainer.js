@@ -13,7 +13,8 @@ class CourseManagerContainer extends React.Component {
   state = {
     layout: this.props.match.params.layout,
     courses: [],
-    newCourseTitle: ''
+    newCourseTitle: '',
+    sort: 'date-desc',
   };
 
   componentDidMount() {
@@ -56,6 +57,39 @@ class CourseManagerContainer extends React.Component {
             }
           }));
 
+  sortTitle = () => this.setState({
+    ...this.state,
+    sort: this.state.sort === 'title-desc' ? 'title-asc' : 'title-desc'
+  });
+
+  sortOwner = () => this.setState({
+    ...this.state,
+    sort: this.state.sort === 'owner-desc' ? 'owner-asc' : 'owner-desc'
+  });
+
+  sortDate = () => this.setState({
+    ...this.state,
+    sort: this.state.sort === 'date-desc' ? 'date-asc' : 'date-desc'
+  });
+
+  sortCourses = () => {
+    let sortFn;
+    if (this.state.sort === 'title-asc') {
+      sortFn = (a, b) => a.title <= b.title ? 1 : -1;
+    } else if (this.state.sort === 'title-desc') {
+      sortFn = (a, b) => a.title <= b.title ? -1 : 1;
+    } else if (this.state.sort === 'owner-asc') {
+      sortFn = (a, b) => a.owner <= b.owner ? 1 : -1;
+    } else if (this.state.sort === 'owner-desc') {
+      sortFn = (a, b) => a.owner <= b.owner ? -1 : 1;
+    } else if (this.state.sort === 'date-asc') {
+      sortFn = (a, b) => a.date <= b.date ? 1 : -1;
+    } else if (this.state.sort === 'date-desc') {
+      sortFn = (a, b) => a.date <= b.date ? -1 : 1;
+    }
+    return this.state.courses.sort(sortFn);
+  };
+
   render() {
     return(
         <div>
@@ -93,17 +127,22 @@ class CourseManagerContainer extends React.Component {
             this.state.layout === 'table' &&
             <div>
               <CourseTableComponent
-                  children={
-                      <FontAwesomeIcon
-                          icon={faTh}
-                          onClick={() => this.setLayout('grid')}
-                          className='icon-link float-right'
-                      >
-                        Grid
-                      </FontAwesomeIcon>
+                  gridButton={
+                    <FontAwesomeIcon
+                        icon={faTh}
+                        onClick={() => this.setLayout('grid')}
+                        className='icon-link float-right'
+                    >
+                      Grid
+                    </FontAwesomeIcon>
                   }
+                  sortTitle={this.sortTitle}
+                  sortOwner={this.sortOwner}
+                  sortDate={this.sortDate}
                   deleteCourse={this.deleteCourse}
-                  courses={this.state.courses}/>
+                  courses={this.sortCourses()}
+                  sort={this.state.sort}
+              />
             </div>
           }
           {

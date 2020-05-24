@@ -53,6 +53,10 @@ tr td:first-child{
   align-items: center;
 }
 
+.sort-icon {
+  margin: 0 0.5rem;
+}
+
 @media screen and (max-width: 390px) {
   .search-chunk {
     flex-wrap: wrap;
