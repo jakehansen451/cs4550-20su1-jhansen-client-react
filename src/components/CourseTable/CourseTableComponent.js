@@ -76,10 +76,10 @@ export default class CourseTableComponent extends React.Component {
                 </th>
                 <th>
                   <div className='grid-btn-block'>
-                    <label htmlFor='grid-btn' className='grid-btn-label'>
+                    <div className='grid-btn-label'>
                       Grid view:
-                    </label>
-                    <div id='grid-btn' className='grid-btn'>
+                    </div>
+                    <div className='grid-btn'>
                       {this.props.gridButton}
                     </div>
                   </div>

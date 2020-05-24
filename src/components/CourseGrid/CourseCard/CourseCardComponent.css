@@ -1,0 +1,52 @@
+.grid-item {
+  border: 1px solid var(--light-grey);
+  background-color: var(--white);
+}
+
+.card-preview {
+  color: var(--light-grey);
+  height: 8rem;
+  display: flex;
+}
+
+.preview-text {
+  margin: auto;
+}
+
+.name-block {
+  display: inline-flex;
+  width: 100%;
+  max-width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card-edit-block {
+  border-top: 1px solid var(--light-grey);
+  background-color: var(--lightest-green);
+  padding: 0.25rem;
+}
+
+.card-btn-row {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
+.course-name-input {
+  height: 1.5rem;
+  flex-basis: 12rem;
+}
+
+.card-btn {
+  font-size: x-small;
+  width: fit-content;
+  height: 1.4rem;
+}
+
+.modified-info {
+  width: 100%;
+  font-size: small;
+  padding: 0.25rem 0;
+}

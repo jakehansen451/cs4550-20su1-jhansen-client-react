@@ -44,7 +44,7 @@ export default class CourseRowComponent extends React.Component {
                 newCourseTitle: event.target.value
               })}
               value={this.state.newCourseTitle}/> :
-          <Link to={`/editor/${this.state.course._id}`}>
+          <Link className='icon-link' to={`/editor/${this.state.course._id}`}>
             {this.state.course.title}
           </Link>;
 

@@ -1,6 +1,15 @@
 .grid-container {
+  border: 1px solid var(--green);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: var(--lightest-grey);
+}
+
+.class-grid {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 0.5rem;
+  padding: 0.5rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .course-grid-header {
@@ -12,14 +21,20 @@
 }
 
 .grid-sort-bar {
+  border-top: 1px solid var(--lighter-grey);
+  border-bottom: 1px solid var(--lighter-grey);
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
+  font-weight: bold;
+  background-color: var(--lightest-grey);
+  padding: 0.25rem 0.5rem;
 }
 
 .sort-button-row {
   display: inline-flex;
   justify-content: space-between;
+  flex-basis: 20rem;
 }
 
 .sort-button {
@@ -31,37 +46,52 @@
   flex-wrap: nowrap;
 }
 
-.table-button {
-  padding: 0.25rem;
+.table-btn-block {
+  display: inline-flex;
+  float: right;
+  align-items: baseline;
+}
 
+.table-btn-label {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.table-btn {
+  line-height: 2;
+  padding: 0 0.5rem;
 }
 
 @media screen and (max-width: 1200px) {
-  .grid-container {
-    grid-template-columns: auto auto auto auto auto;
+  .class-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .grid-container {
-    grid-template-columns: auto auto auto auto;
+  .class-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media screen and (max-width: 820px) {
-  .grid-container {
-    grid-template-columns: auto auto auto;
+  .class-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media screen and (max-width: 620px) {
-  .grid-container {
-    grid-template-columns: auto auto;
+  .class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .table-btn-label {
+    display: none;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .grid-container {
-    grid-template-columns: auto;
+  .class-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -29,7 +29,7 @@ export default class CourseGridComponent extends React.Component {
   />;
   render() {
     return(
-        <div>
+        <div className='grid-container'>
           <div className='title-bar course-grid-header'>
             <h2>Courses</h2>
             <form className="add-course-chunk">
@@ -54,21 +54,35 @@ export default class CourseGridComponent extends React.Component {
               <div
                   className='sort-button'
                   onClick={this.props.sortTitle}
-              >Title</div>
+              >
+                Title
+                {this.props.sort.includes('title') ? this.sortIcon() : null}
+              </div>
               <div
                   className='sort-button'
                   onClick={this.props.sortOwner}
-              >Owner</div>
+              >
+                Owner
+                {this.props.sort.includes('owner') ? this.sortIcon() : null}
+              </div>
               <div
                   className='sort-button'
                   onClick={this.props.sortDate}
-              >Modified</div>
+              >
+                Modified
+                {this.props.sort.includes('date') ? this.sortIcon() : null}
+                </div>
             </div>
-            <div className='table-button'>
-              {this.props.tableButton}
+            <div className='table-btn-block'>
+              <div className='table-btn-label'>
+                List view:
+              </div>
+              <div className='table-btn'>
+                {this.props.tableButton}
+              </div>
             </div>
           </div>
-          <div className='grid-container'>
+          <div className='class-grid'>
             {this.props.courses.map(course =>
                 <CourseCardComponent
                     refreshCourses={this.props.refreshCourses}
