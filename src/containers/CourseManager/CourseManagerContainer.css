@@ -37,7 +37,7 @@ body {
 .wbdv-add-course {
   width: max-content;
   font-size: xx-large;
-  line-height: 1;
+  line-height: 0.5;
   margin: 0 1rem;
 }
 

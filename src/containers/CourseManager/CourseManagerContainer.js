@@ -2,10 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft, faTh } from '@fortawesome/free-solid-svg-icons';
-
 import CourseTableComponent from "../../components/CourseTable/CourseTableComponent";
 import CourseGridComponent from "../../components/CourseGrid/CourseGridComponent";
 import courseService from "../../services/CourseService";
+import DateUtils from '../../utils/DateUtils';
 import '../../styles.css';
 import './CourseManagerContainer.css';
 
@@ -20,7 +20,9 @@ class CourseManagerContainer extends React.Component {
   componentDidMount() {
     courseService.findAllCourses()
     .then(actualArrayOfCourses =>
-        this.setState({ courses: actualArrayOfCourses })
+        this.setState({ courses: actualArrayOfCourses.map((course) => {
+          return {...course, modified: DateUtils.toLocalDateTime(course.modified)}
+        })})
     )
   }
 
@@ -40,11 +42,12 @@ class CourseManagerContainer extends React.Component {
         courses: prevState.courses.filter(course => course !== courseToDelete)
       })));
 
-  addCourse = (title) =>
+  addCourse = (title) => {
+    if (this.state.newCourseTitle !== '') {
       courseService.createCourse({
         title: title,
         owner: 'me',
-        modified: (new Date()).toDateString()
+        modified: (new Date()).toISOString()
       })
       .then(theActualNewCourse =>
           this.setState((prevState) => {
@@ -52,10 +55,18 @@ class CourseManagerContainer extends React.Component {
               newCourseTitle: '',
               courses: [
                 ...prevState.courses,
-                theActualNewCourse
+                {
+                  ...theActualNewCourse,
+                  modified: DateUtils.toLocalDateTime(theActualNewCourse.modified)
+                }
               ]
             }
           }));
+    } else {
+      alert('New course title cannot be empty.');
+    }
+  };
+
 
   sortTitle = () => this.setState({
     ...this.state,
@@ -75,17 +86,17 @@ class CourseManagerContainer extends React.Component {
   sortCourses = () => {
     let sortFn;
     if (this.state.sort === 'title-asc') {
-      sortFn = (a, b) => a.title <= b.title ? 1 : -1;
+      sortFn = (a, b) => a.title.toString() <= b.title.toString() ? 1 : -1;
     } else if (this.state.sort === 'title-desc') {
-      sortFn = (a, b) => a.title <= b.title ? -1 : 1;
+      sortFn = (a, b) => a.title.toString() <= b.title.toString() ? -1 : 1;
     } else if (this.state.sort === 'owner-asc') {
-      sortFn = (a, b) => a.owner <= b.owner ? 1 : -1;
+      sortFn = (a, b) => a.owner.toString() <= b.owner.toString() ? 1 : -1;
     } else if (this.state.sort === 'owner-desc') {
-      sortFn = (a, b) => a.owner <= b.owner ? -1 : 1;
+      sortFn = (a, b) => a.owner.toString() <= b.owner.toString() ? -1 : 1;
     } else if (this.state.sort === 'date-asc') {
-      sortFn = (a, b) => a.date <= b.date ? 1 : -1;
+      sortFn = (a, b) => a.modified.toString() <= b.modified.toString() ? 1 : -1;
     } else if (this.state.sort === 'date-desc') {
-      sortFn = (a, b) => a.date <= b.date ? -1 : 1;
+      sortFn = (a, b) => a.modified.toString() <= b.modified.toString() ? -1 : 1;
     }
     return this.state.courses.sort(sortFn);
   };

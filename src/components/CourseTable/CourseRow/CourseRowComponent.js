@@ -2,7 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import courseService from '../../../services/CourseService'
+import courseService from '../../../services/CourseService';
+import DateUtils from '../../../utils/DateUtils';
 import './CourseRowComponent.css';
 
 export default class CourseRowComponent extends React.Component {
@@ -17,8 +18,20 @@ export default class CourseRowComponent extends React.Component {
   saveCourseRow = () =>
       courseService.updateCourse(
           this.state.course._id,
-          this.state.course)
-      .then(status => this.setEditing(false));
+          {...this.state.course,
+            modified: (new Date()).toISOString()
+          })
+      .then(status => {
+        this.setEditing(false);
+        courseService.findCourseById(this.state.course._id)
+        .then((actualCourse) => this.setState(
+            {...this.state,
+              course: {
+                ...actualCourse,
+                modified: DateUtils.toLocalDateTime(actualCourse.modified)
+              }
+            }))
+      });
 
   updateCourseTitle = (newTitle) =>
       this.setState(prevState => ({
@@ -79,25 +92,3 @@ export default class CourseRowComponent extends React.Component {
     )
   }
 }
-
-/*
-<tr className={this.state.editing ? 'table-primary' : ''}>
-          <td>
-            {
-              !this.state.editing &&
-              <button
-                  className="btn btn-primary"
-                  onClick={() => this.setEditing(true)}>
-                Edit
-              </button>
-            }
-            {
-              this.state.editing &&
-              <span>
-              <button onClick={this.ok}>
-                Ok</button>
-            </span>
-            }
-          </td>
-        </tr>
- */
