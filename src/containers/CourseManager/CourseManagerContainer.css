@@ -13,13 +13,6 @@
   border: 1px solid var(--lighter-grey);
 }
 
-.wbdv-hamburger {
-  background-color: inherit;
-  border: none;
-  font-size: medium;
-  padding: 0.25rem;
-}
-
 .course-list-search-input {
   margin: 0 1rem;
 }

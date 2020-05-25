@@ -4,12 +4,6 @@
   margin-bottom: 1rem;
 }
 
-.wbdv-exit-editor-btn {
-  font-size: x-large;
-  margin: 0 1em 0 0;
-  opacity: 0.9;
-}
-
 .wbdv-navbar-content {
   flex-direction: row;
   align-items: baseline;

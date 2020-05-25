@@ -3,15 +3,15 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import '../../../styles.css';
-import './ModuleNavbarComponent.css';
+import './EditorNavbarComponent.css';
 
-const ModuleNavbarComponet = (props) => {
+const EditorNavbarComponet = (props) => {
   return(
       <nav className="navbar navbar-light wbdv-editor-main-navbar">
         <div>
           <Link to="/courses/">
             <FontAwesomeIcon
-                className='wbdv-course-editor wbdv-exit-editor-btn icon-link'
+                className='wbdv-course-editor wbdv-back-btn icon-link'
                 icon={faArrowCircleLeft}
             />
           </Link>
@@ -31,4 +31,4 @@ const ModuleNavbarComponet = (props) => {
   )
 };
 
-export default ModuleNavbarComponet;
+export default EditorNavbarComponet;

@@ -142,3 +142,9 @@ body {
 .delete-btn:hover {
   color: var(--dark-red)
 }
+
+.wbdv-back-btn {
+  font-size: large;
+  margin: 0 1em 0 0;
+  opacity: 0.9;
+}

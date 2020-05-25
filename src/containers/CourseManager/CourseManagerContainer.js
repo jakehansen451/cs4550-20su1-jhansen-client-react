@@ -99,11 +99,17 @@ class CourseManagerContainer extends React.Component {
           <nav className="navbar fixed-top course-list-search-navbar">
             <div>
               <Link to='/'>
-                <FontAwesomeIcon className='icon-link' icon={faArrowCircleLeft} />
+                <FontAwesomeIcon
+                    icon={faArrowCircleLeft}
+                    className='icon-link wbdv-back-btn'
+                />
               </Link>
-              <button
-                  className="fa fa-bars icon-link wbdv-field wbdv-hamburger"
-              />
+              <button className='wbdv-btn'>
+                <FontAwesomeIcon
+                    icon={faBars}
+                    className="icon-link wbdv-hamburger"
+                />
+              </button>
               <div className="navbar-brand">
                 Browse Courses
               </div>
