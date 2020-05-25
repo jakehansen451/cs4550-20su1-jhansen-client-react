@@ -39,9 +39,11 @@ const dummyModules = [
   }
 ];
 
+const dummyTabs = ['Build', 'Pages', 'Theme', 'Store', 'Apps'];
 
 export default class CourseEditorContainer extends React.Component {
   state = {
+    currentTab: 'Pages',
     course: {},
     selectedModule: {},
   };
@@ -54,11 +56,16 @@ export default class CourseEditorContainer extends React.Component {
       const id = this.getCourseIDFromURL();
       CourseService.findCourseById(id)
       .then((actualCourse) => {
-        const course = {...actualCourse, modules: dummyModules};
+        const course = {
+          ...actualCourse,
+          modules: dummyModules,
+          tabs: dummyTabs,
+          currentTab: 'Pages',
+        };
         const selectedModule = course.modules.length > 0
             ? course.modules[0]
             : {};
-        this.setState({course: course, selectedModule: selectedModule});
+        this.setState({...this.state, course: course, selectedModule: selectedModule});
       });
     }
   };
@@ -66,13 +73,17 @@ export default class CourseEditorContainer extends React.Component {
   selectModule = (module) =>
       this.setState({...this.state, selectedModule: module});
 
+  selectTab = (tabName) =>
+    alert('Selected tab '.concat(tabName));
+
   render() {
     return(
         <div>
           {EditorNavbarComponent({
-            title: !Utils.isEmpty(this.state.course)
-                ? this.state.course.title
-                : ''
+            title: !Utils.isEmpty(this.state.course) ? this.state.course.title : '',
+            tabs: !Utils.isEmpty(this.state.course) ? this.state.course.tabs : [],
+            currentTab: this.state.currentTab,
+            selectTab: this.selectTab,
           })}
           <div className='modules-section'>
             <div className='modules-list'>

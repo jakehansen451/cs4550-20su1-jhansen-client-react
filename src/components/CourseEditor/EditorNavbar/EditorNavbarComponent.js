@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
+import LessonTabsComponent from "./LessonTabs/LessonTabsComponent";
 import '../../../styles.css';
 import './EditorNavbarComponent.css';
 
@@ -18,11 +19,13 @@ const EditorNavbarComponet = (props) => {
           <div className="navbar-brand">{props.title}</div>
         </div>
 
-        <ul className="wbdv-navbar-content navbar-nav mr-auto">
-          <li className="nav-item wbdv-navbar-content-item active">
-            <button className="nav-link wbdv-btn" aria-disabled="true">Pages</button>
-          </li>
 
+        <ul className="wbdv-navbar-content navbar-nav mr-auto">
+          {props.tabs.map((tab) => LessonTabsComponent({
+            tab: tab,
+            selected: tab === props.currentTab,
+            selectTab: props.selectTab,
+          }))}
           <li className="nav-item wbdv-navbar-content-item">
             <button className="nav-link icon-link wbdv-btn" aria-disabled="true">+</button>
           </li>
