@@ -34,6 +34,7 @@ export default class WidgetContainer extends React.Component {
           </div>
           <WidgetListComponent
               widgets={this.state.widgets}
+              activeWidget={this.state.activeWidget}
           />
         </div>
     )

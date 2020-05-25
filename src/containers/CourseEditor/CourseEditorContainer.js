@@ -13,14 +13,14 @@ const dummyModules = [
         {
           name: 'Topic 1',
           widgets: [
-              { name: 'Widget 1', type: 'heading-widget' },
-            { name: 'Widget 2', type: 'heading-widget' },
+            { name: 'Widget 1', type: 'heading' },
+            { name: 'Widget 2', type: 'heading' },
           ]
         },
       {
         name: 'Topic 2',
         widgets: [
-            { name: 'Widget 1', type: 'heading-widget' },
+            { name: 'Widget 1', type: 'heading' },
         ]
       },
     ],
@@ -31,9 +31,9 @@ const dummyModules = [
       {
         name: 'Topic 1',
         widgets: [
-          { name: 'Widget 1', type: 'heading-widget' },
-          { name: 'Widget 2', type: 'heading-widget' },
-          { name: 'Widget 3', type: 'heading-widget' },
+          { name: 'Widget 1', type: 'heading' },
+          { name: 'Widget 2', type: 'heading' },
+          { name: 'Widget 3', type: 'heading' },
         ]
       }
     ],
