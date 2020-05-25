@@ -119,6 +119,10 @@ body {
   text-decoration: none;
 }
 
+.wbdv-delete-btn:hover {
+  color: var(--dark-red);
+}
+
 .wbdv-back-btn {
   font-size: large;
   margin: 0 1em 0 0;

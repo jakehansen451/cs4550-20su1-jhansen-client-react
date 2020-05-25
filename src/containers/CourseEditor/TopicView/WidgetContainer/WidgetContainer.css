@@ -1,0 +1,16 @@
+.wbdv-topic-content {
+  border: solid var(--lightest-grey);
+  border-width: 0 1px 1px 1px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  padding: 10px;
+}
+
+.wbdv-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: x-large;
+  margin: 5px;
+}
