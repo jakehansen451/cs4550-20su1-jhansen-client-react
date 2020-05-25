@@ -1,0 +1,12 @@
+.modules-section {
+  display: inline-flex;
+  width: 100%;
+}
+
+.modules-list {
+  flex-grow: 1;
+}
+
+.modules-detail {
+  flex-grow: 3;
+}
