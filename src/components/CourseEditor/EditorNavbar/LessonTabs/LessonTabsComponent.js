@@ -5,6 +5,7 @@ import './LessonTabsComponent.css';
 const LessonTabsComponent = (props) => {
   return (
       <li
+          key={props.tab}
           className={props.selected
               ? "nav-item wbdv-navbar-content-item wbdv-selected-tab"
               : "nav-item wbdv-navbar-content-item"}

@@ -2,15 +2,15 @@ import React from 'react';
 
 const TopicPillsComponent = (props) => {
 
-  const topicPill = (topicName) =>
-      <li className="nav-item">
-        <a className={props.active === topicName
+  const topicPill = (topic) =>
+      <li key={topic.name} className="nav-item">
+        <div className={props.active.name === topic.name
             ? "nav-link wbdv-topic-pill active topic-selected"
             : "nav-link wbdv-topic-pill"
         }
         >
-          {topicName}
-        </a>
+          {topic.name}
+        </div>
       </li>;
 
   return (
@@ -20,7 +20,7 @@ const TopicPillsComponent = (props) => {
           <li className="nav-item">
             <div
                 className="nav-link topic-link icon-link wbdv-topic-add-btn"
-                onClick={() => alert('Pretending to add new topic.')}
+                onClick={props.addTopic}
             >
               +
             </div>

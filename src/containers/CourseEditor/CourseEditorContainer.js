@@ -53,22 +53,20 @@ export default class CourseEditorContainer extends React.Component {
       window.location.pathname.replace('/editor/', '').replace('/', '');
 
   componentDidMount() {
-    if (Utils.isEmpty(this.state.course) || Utils.isEmpty(this.state.selectedModule)) {
-      const id = this.getCourseIDFromURL();
-      CourseService.findCourseById(id)
-      .then((actualCourse) => {
-        const course = {
-          ...actualCourse,
-          modules: dummyModules,
-          tabs: dummyTabs,
-          currentTab: 'Pages',
-        };
-        const selectedModule = course.modules.length > 0
-            ? course.modules[0]
-            : {};
-        this.setState({...this.state, course: course, selectedModule: selectedModule});
-      });
-    }
+    const id = this.getCourseIDFromURL();
+    CourseService.findCourseById(id)
+    .then((actualCourse) => {
+      const course = {
+        ...actualCourse,
+        modules: dummyModules,
+        tabs: dummyTabs,
+        currentTab: 'Pages',
+      };
+      const selectedModule = course.modules.length > 0
+          ? course.modules[0]
+          : {};
+      this.setState({...this.state, course: course, selectedModule: selectedModule});
+    });
   };
 
   selectModule = (module) =>
@@ -95,7 +93,11 @@ export default class CourseEditorContainer extends React.Component {
             })}
             </div>
             <div className='wbdv-topic-section'>
-              <TopicViewContainer />
+              <TopicViewContainer
+                  topics={!Utils.isEmpty(this.state.selectedModule)
+                      ? this.state.selectedModule.topics
+                      : []}
+              />
             </div>
           </div>
         </div>
