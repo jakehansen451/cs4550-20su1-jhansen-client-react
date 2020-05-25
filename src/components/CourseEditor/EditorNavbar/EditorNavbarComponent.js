@@ -12,7 +12,7 @@ const EditorNavbarComponet = (props) => {
         <div>
           <Link to="/courses/">
             <FontAwesomeIcon
-                className='wbdv-course-editor wbdv-back-btn icon-link'
+                className='wbdv-course-editor wbdv-back-btn wbdv-icon-link'
                 icon={faArrowCircleLeft}
             />
           </Link>
@@ -28,7 +28,7 @@ const EditorNavbarComponet = (props) => {
           }))}
           <li className="nav-item wbdv-navbar-content-item">
             <button
-                className="nav-link icon-link wbdv-btn"
+                className="nav-link wbdv-icon-link wbdv-btn"
                 onClick={props.addTab}
             >
               +

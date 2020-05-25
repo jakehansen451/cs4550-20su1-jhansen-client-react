@@ -50,7 +50,7 @@ export default class CourseCardComponent extends React.Component {
                 newCourseTitle: event.target.value
               })}
               value={this.state.newCourseTitle}/> :
-          <Link className='icon-link' to={`/editor/${this.state.course._id}`}>
+          <Link className='wbdv-icon-link' to={`/editor/${this.state.course._id}`}>
             {this.state.course.title}
           </Link>;
 
@@ -74,13 +74,13 @@ export default class CourseCardComponent extends React.Component {
               {
                 this.state.editing ?
                     <button
-                        className="wbdv-button green-btn wbdv-card-btn"
+                        className="wbdv-button wbdv-green-btn wbdv-card-btn"
                         onClick={this.saveCourseCard}
                     >
                       <FontAwesomeIcon icon={faCheck}/>
                     </button> :
                     <button
-                        className={"wbdv-button green-btn wbdv-card-btn"}
+                        className={"wbdv-button wbdv-green-btn wbdv-card-btn"}
                         onClick={() => this.setEditing(true)}
                     >
                       <FontAwesomeIcon icon={faPencilAlt}/>
@@ -89,13 +89,13 @@ export default class CourseCardComponent extends React.Component {
               {
                 this.state.editing ?
                     <button
-                        className='float-right red-btn wbdv-button wbdv-delete wbdv-card-btn'
+                        className='float-right wbdv-red-btn wbdv-button wbdv-delete wbdv-card-btn'
                         onClick={() => this.setEditing(false)}
                     >
                       <FontAwesomeIcon icon={faTimes}/>
                     </button> :
                     <button
-                        className="float-right red-btn wbdv-button wbdv-delete wbdv-card-btn"
+                        className="float-right wbdv-red-btn wbdv-button wbdv-delete wbdv-card-btn"
                         onClick={() => this.props.deleteCourse(this.props.course)}
                     >
                       <FontAwesomeIcon icon={faTrash} />

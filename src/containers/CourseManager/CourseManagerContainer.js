@@ -101,7 +101,7 @@ class CourseManagerContainer extends React.Component {
               <Link to='/'>
                 <FontAwesomeIcon
                     icon={faArrowCircleLeft}
-                    className='icon-link wbdv-back-btn'
+                    className='wbdv-icon-link wbdv-back-btn'
                 />
               </Link>
               <div className="navbar-brand">
@@ -116,7 +116,7 @@ class CourseManagerContainer extends React.Component {
                   aria-label="Search"
               />
               <button
-                  className="wbdv-button green-btn wbdv-course-search-button"
+                  className="wbdv-button wbdv-green-btn wbdv-course-search-button"
                   type="submit"
               >
                 Search
@@ -132,7 +132,7 @@ class CourseManagerContainer extends React.Component {
                       <FontAwesomeIcon
                           icon={faTh}
                           onClick={() => this.setLayout('grid')}
-                          className='icon-link wbdv-switch-layout-btn'
+                          className='wbdv-icon-link wbdv-switch-layout-btn'
                       />
                     }
                     sortTitle={this.sortTitle}
@@ -153,7 +153,7 @@ class CourseManagerContainer extends React.Component {
                       <FontAwesomeIcon
                           icon={faBars}
                           onClick={() => this.setLayout('table')}
-                          className='icon-link wbdv-switch-layout-btn'
+                          className='wbdv-icon-link wbdv-switch-layout-btn'
                       />
                     }
                     sortTitle={this.sortTitle}

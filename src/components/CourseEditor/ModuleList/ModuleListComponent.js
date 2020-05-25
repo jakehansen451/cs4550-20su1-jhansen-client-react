@@ -13,7 +13,7 @@ const ModuleListComponent = (props) => {
       >
         <div>{module.name}</div>
         <button
-            className="icon-link delete-btn wbdv-btn"
+            className="wbdv-icon-link delete-btn wbdv-btn"
             onClick={() => alert('Pretending to delete module')}
         >X</button>
       </li>;
@@ -23,7 +23,7 @@ const ModuleListComponent = (props) => {
         <div className="wbdv-module-list-header">
           <div>Modules</div>
           <button
-              className="icon-link wbdv-btn"
+              className="wbdv-icon-link wbdv-btn"
               onClick={() => alert('Pretending to add module')}
           >+</button>
         </div>

@@ -19,7 +19,7 @@ const TopicPillsComponent = (props) => {
           {props.topics.map(topicPill)}
           <li className="nav-item">
             <div
-                className="nav-link topic-link icon-link wbdv-topic-add-btn"
+                className="nav-link topic-link wbdv-icon-link wbdv-topic-add-btn"
                 onClick={props.addTopic}
             >
               +

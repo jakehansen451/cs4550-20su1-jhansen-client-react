@@ -33,7 +33,7 @@ export default class CourseTableComponent extends React.Component {
   render() {
     return (
         <div className="wbdv-class-table">
-          <div className="title-bar wbdv-course-table-header">
+          <div className="wbdv-title-bar wbdv-course-table-header">
             <h2>Courses</h2>
             <form className="wbdv-add-course-chunk">
               <input
@@ -47,7 +47,7 @@ export default class CourseTableComponent extends React.Component {
                   placeholder="Add a course"
                   title="Add the title of the new course"
               />
-              <div className="wbdv-button wbdv-add-course icon-link"
+              <div className="wbdv-button wbdv-add-course wbdv-icon-link"
                    onClick={ () => this.addCourse(this.state.newCourseTitle) }
               >+</div>
             </form>

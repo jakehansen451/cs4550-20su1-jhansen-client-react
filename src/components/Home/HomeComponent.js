@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const HomeComponent = () =>
     <div>
-      <div className='title-bar'>
+      <div className='wbdv-title-bar'>
         <h1>
           Whiteboard
         </h1>
