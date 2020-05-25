@@ -89,11 +89,6 @@ export default class WidgetContainer extends React.Component {
               </div>
             </div>
 
-
-
-
-
-
             <div className="card">
               <div className="card-header widget-heading-bar" id="widget2-heading">
                 <button

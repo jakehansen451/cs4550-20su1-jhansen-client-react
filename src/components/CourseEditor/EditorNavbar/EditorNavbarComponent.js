@@ -27,7 +27,12 @@ const EditorNavbarComponet = (props) => {
             selectTab: props.selectTab,
           }))}
           <li className="nav-item wbdv-navbar-content-item">
-            <button className="nav-link icon-link wbdv-btn" aria-disabled="true">+</button>
+            <button
+                className="nav-link icon-link wbdv-btn"
+                onClick={props.addTab}
+            >
+              +
+            </button>
           </li>
         </ul>
       </nav>

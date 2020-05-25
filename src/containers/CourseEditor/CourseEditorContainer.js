@@ -75,6 +75,8 @@ export default class CourseEditorContainer extends React.Component {
   selectTab = (tabName) =>
     alert('Selected tab '.concat(tabName));
 
+  addTab = () => alert('Pretending to add tab');
+
   render() {
     return(
         <div>
@@ -83,6 +85,7 @@ export default class CourseEditorContainer extends React.Component {
             tabs: !Utils.isEmpty(this.state.course) ? this.state.course.tabs : [],
             currentTab: this.state.currentTab,
             selectTab: this.selectTab,
+            addTab: this.addTab,
           })}
           <div className='wbdv-modules-section'>
             <div className='wbdv-modules-list'>

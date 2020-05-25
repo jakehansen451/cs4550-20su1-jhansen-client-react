@@ -18,7 +18,7 @@ export default class TopicViewContainer extends React.Component {
     }
   }
 
-  addTopic = (topicName) => alert('Pretending to add topic: '.concat(topicName, '.'));
+  addTopic = () => alert('Pretending to add topic');
 
   render() {
     return (
