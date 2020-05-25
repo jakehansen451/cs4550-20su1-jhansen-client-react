@@ -1,0 +1,23 @@
+.wbdv-module-list-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: x-large;
+  margin: 5px;
+}
+
+.wbdv-module-btn {
+  background-color: inherit;
+  border: none;
+}
+
+.wbdv-module-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wbdv-module-selected {
+  background-color: var(--lightest-green);
+}
