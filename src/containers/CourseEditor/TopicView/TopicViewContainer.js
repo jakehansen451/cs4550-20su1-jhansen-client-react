@@ -20,6 +20,10 @@ export default class TopicViewContainer extends React.Component {
 
   addTopic = () => alert('Pretending to add topic');
 
+  selectTopic = (topic) => {
+    this.setState({...this.state, activeTopic: topic})
+  };
+
   render() {
     return (
         <div>
@@ -27,6 +31,7 @@ export default class TopicViewContainer extends React.Component {
               topics={this.state.topics}
               active={this.state.activeTopic}
               addTopic={this.addTopic}
+              selectTopic={this.selectTopic}
           />
           <WidgetContainer
               widgets={!Utils.isEmpty(this.state.activeTopic)

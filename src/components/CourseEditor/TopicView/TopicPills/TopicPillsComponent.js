@@ -3,7 +3,11 @@ import React from 'react';
 const TopicPillsComponent = (props) => {
 
   const topicPill = (topic) =>
-      <li key={topic.name} className="nav-item">
+      <li
+          key={topic.name}
+          className="nav-item"
+          onClick={() => props.selectTopic(topic)}
+      >
         <div className={props.active.name === topic.name
             ? "nav-link wbdv-topic-pill active topic-selected"
             : "nav-link wbdv-topic-pill"
