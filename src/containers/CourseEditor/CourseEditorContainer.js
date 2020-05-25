@@ -1,6 +1,6 @@
 import React from "react";
-import ModuleListComponent from './ModuleList/ModuleListComponent.js';
-import EditorNavbarComponent from './EditorNavbar/EditorNavbarComponent';
+import ModuleListComponent from '../../components/CourseEditor/ModuleList/ModuleListComponent.js';
+import EditorNavbarComponent from '../../components/CourseEditor/EditorNavbar/EditorNavbarComponent';
 
 const dummyModule = {
   name: 'Module 1',
@@ -44,7 +44,7 @@ const dummyCourse = {
   ]
 };
 
-export default class CourseEditorComponent extends React.Component {
+export default class CourseEditorContainer extends React.Component {
   state = {
     course: dummyCourse,
     selectedModule: dummyModule,

@@ -1,6 +1,6 @@
 import React from 'react';
-import courseService from "../../../services/CourseService";
-import DateUtils from "../../../utils/DateUtils";
+import courseService from "../../../../services/CourseService";
+import DateUtils from "../../../../utils/DateUtils";
 import './CourseCardComponent.css';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

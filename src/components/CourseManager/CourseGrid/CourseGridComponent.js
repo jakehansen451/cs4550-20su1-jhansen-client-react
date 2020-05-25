@@ -1,5 +1,5 @@
 import React from "react";
-import courseService from "../../services/CourseService";
+import courseService from "../../../services/CourseService";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import CourseCardComponent from './CourseCard/CourseCardComponent';

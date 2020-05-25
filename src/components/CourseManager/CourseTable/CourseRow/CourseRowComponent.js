@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPencilAlt, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import courseService from '../../../services/CourseService';
+import courseService from '../../../../services/CourseService';
 import './CourseRowComponent.css';
 
 export default class CourseRowComponent extends React.Component {

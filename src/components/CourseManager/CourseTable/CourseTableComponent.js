@@ -2,8 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import CourseRowComponent from "./CourseRow/CourseRowComponent";
-import courseService from "../../services/CourseService";
-import '../../styles.css';
+import courseService from "../../../services/CourseService";
+import '../../../styles.css';
 import './CourseTableComponent.css';
 
 
