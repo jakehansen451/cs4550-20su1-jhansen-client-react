@@ -26,16 +26,16 @@ export default class CourseTableComponent extends React.Component {
   };
 
   sortIcon = () => <FontAwesomeIcon
-      className='sort-icon'
+      className='wbdv-sort-icon'
       icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
   />;
 
   render() {
     return (
-        <div className="class-table">
-          <div className="title-bar course-table-header">
+        <div className="wbdv-class-table">
+          <div className="title-bar wbdv-course-table-header">
             <h2>Courses</h2>
-            <form className="add-course-chunk">
+            <form className="wbdv-add-course-chunk">
               <input
                   className="wbdv-field wbdv-new-course"
                   id="add-course-title"
@@ -52,7 +52,7 @@ export default class CourseTableComponent extends React.Component {
               >+</div>
             </form>
           </div>
-          <table className="table table-striped course-table">
+          <table className="table table-striped wbdv-course-table">
             <thead>
               <tr>
                 <th></th>
@@ -75,11 +75,11 @@ export default class CourseTableComponent extends React.Component {
                   </div>
                 </th>
                 <th>
-                  <div className='grid-btn-block'>
-                    <div className='grid-btn-label'>
+                  <div className='wbdv-grid-btn-block'>
+                    <div className='wbdv-grid-btn-label'>
                       Grid view:
                     </div>
-                    <div className='grid-btn'>
+                    <div className='wbdv-grid-btn'>
                       {this.props.gridButton}
                     </div>
                   </div>

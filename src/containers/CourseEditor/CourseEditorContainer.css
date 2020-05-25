@@ -1,12 +1,12 @@
-.modules-section {
+.wbdv-modules-section {
   display: inline-flex;
   width: 100%;
 }
 
-.modules-list {
+.wbdv-modules-list {
   flex-grow: 1;
 }
 
-.topic-section {
+.wbdv-topic-section {
   flex-grow: 3;
 }

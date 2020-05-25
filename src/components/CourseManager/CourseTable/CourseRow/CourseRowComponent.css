@@ -1,11 +1,11 @@
 @media screen and (max-width: 720px) {
-  .last-modified {
+  .wbdv-last-modified {
     display: none;
   }
 }
 
 @media screen and (max-width: 470px) {
-  .owner {
+  .wbdv-owner {
     display: none;
   }
 }
@@ -22,10 +22,10 @@
   display: inline-flex;
 }
 
-.highlighted {
+.wbdv-highlighted {
   background-color: var(--lightest-green)!important;
 }
 
-.course-name-input {
+.wbdv-course-name-input {
   width: 100%;
 }

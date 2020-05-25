@@ -45,7 +45,7 @@ export default class CourseCardComponent extends React.Component {
   courseName = () =>
       this.state.editing ?
           <input
-              className="wbdv-field course-name-input"
+              className="wbdv-field wbdv-course-name-input"
               onChange={(event) => this.setState({
                 newCourseTitle: event.target.value
               })}
@@ -56,31 +56,31 @@ export default class CourseCardComponent extends React.Component {
 
   render() {
     return (
-        <div className='grid-item'>
-          <div className='card-preview'>
-            <div className='preview-text'>
+        <div className='wbdv-grid-item'>
+          <div className='wbdv-card-preview'>
+            <div className='wbdv-preview-text'>
               Preview
             </div>
           </div>
-          <div className='card-edit-block'>
-            <div className='name-block'>
+          <div className='wbdv-card-edit-block'>
+            <div className='wbdv-name-block'>
               {this.courseName()}
             </div>
-            <div className='modified-info'>
+            <div className='wbdv-modified-info'>
               Modified:&nbsp;
               {DateUtils.toShortLocalDateTime(this.props.course.modified)}
             </div>
-            <div className='card-btn-row'>
+            <div className='wbdv-card-btn-row'>
               {
                 this.state.editing ?
                     <button
-                        className="wbdv-button green-btn card-btn"
+                        className="wbdv-button green-btn wbdv-card-btn"
                         onClick={this.saveCourseCard}
                     >
                       <FontAwesomeIcon icon={faCheck}/>
                     </button> :
                     <button
-                        className={"wbdv-button green-btn card-btn"}
+                        className={"wbdv-button green-btn wbdv-card-btn"}
                         onClick={() => this.setEditing(true)}
                     >
                       <FontAwesomeIcon icon={faPencilAlt}/>
@@ -89,13 +89,13 @@ export default class CourseCardComponent extends React.Component {
               {
                 this.state.editing ?
                     <button
-                        className='float-right red-btn wbdv-button wbdv-delete card-btn'
+                        className='float-right red-btn wbdv-button wbdv-delete wbdv-card-btn'
                         onClick={() => this.setEditing(false)}
                     >
                       <FontAwesomeIcon icon={faTimes}/>
                     </button> :
                     <button
-                        className="float-right red-btn wbdv-button wbdv-delete card-btn"
+                        className="float-right red-btn wbdv-button wbdv-delete wbdv-card-btn"
                         onClick={() => this.props.deleteCourse(this.props.course)}
                     >
                       <FontAwesomeIcon icon={faTrash} />

@@ -1,19 +1,19 @@
-.grid-item {
+.wbdv-grid-item {
   border: 1px solid var(--light-grey);
   background-color: var(--white);
 }
 
-.card-preview {
+.wbdv-card-preview {
   color: var(--light-grey);
   height: 8rem;
   display: flex;
 }
 
-.preview-text {
+.wbdv-preview-text {
   margin: auto;
 }
 
-.name-block {
+.wbdv-name-block {
   display: inline-flex;
   width: 100%;
   max-width: fit-content;
@@ -21,31 +21,31 @@
   overflow: hidden;
 }
 
-.card-edit-block {
+.wbdv-card-edit-block {
   border-top: 1px solid var(--light-grey);
   background-color: var(--lightest-green);
   padding: 0.25rem;
 }
 
-.card-btn-row {
+.wbdv-card-btn-row {
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
   font-size: smaller;
 }
 
-.course-name-input {
+.wbdv-course-name-input {
   height: 1.5rem;
   flex-basis: 12rem;
 }
 
-.card-btn {
+.wbdv-card-btn {
   font-size: x-small;
   width: fit-content;
   height: 1.4rem;
 }
 
-.modified-info {
+.wbdv-modified-info {
   width: 100%;
   font-size: small;
   padding: 0.25rem 0;

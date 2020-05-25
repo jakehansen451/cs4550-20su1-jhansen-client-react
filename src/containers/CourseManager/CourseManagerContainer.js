@@ -96,7 +96,7 @@ class CourseManagerContainer extends React.Component {
   render() {
     return(
         <div>
-          <nav className="navbar fixed-top course-list-search-navbar">
+          <nav className="navbar fixed-top wbdv-course-list-search-navbar">
             <div>
               <Link to='/'>
                 <FontAwesomeIcon
@@ -104,17 +104,11 @@ class CourseManagerContainer extends React.Component {
                     className='icon-link wbdv-back-btn'
                 />
               </Link>
-              <button className='wbdv-btn'>
-                <FontAwesomeIcon
-                    icon={faBars}
-                    className="icon-link wbdv-hamburger"
-                />
-              </button>
               <div className="navbar-brand">
                 Browse Courses
               </div>
             </div>
-            <div className="search-chunk">
+            <div className="wbdv-search-chunk">
               <input
                   className="wbdv-field"
                   type="search"
@@ -122,7 +116,7 @@ class CourseManagerContainer extends React.Component {
                   aria-label="Search"
               />
               <button
-                  className="wbdv-button green-btn course-search-button"
+                  className="wbdv-button green-btn wbdv-course-search-button"
                   type="submit"
               >
                 Search
@@ -138,7 +132,7 @@ class CourseManagerContainer extends React.Component {
                       <FontAwesomeIcon
                           icon={faTh}
                           onClick={() => this.setLayout('grid')}
-                          className='icon-link switch-layout-btn'
+                          className='icon-link wbdv-switch-layout-btn'
                       />
                     }
                     sortTitle={this.sortTitle}
@@ -159,7 +153,7 @@ class CourseManagerContainer extends React.Component {
                       <FontAwesomeIcon
                           icon={faBars}
                           onClick={() => this.setLayout('table')}
-                          className='icon-link switch-layout-btn'
+                          className='icon-link wbdv-switch-layout-btn'
                       />
                     }
                     sortTitle={this.sortTitle}

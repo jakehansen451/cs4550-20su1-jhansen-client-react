@@ -24,15 +24,16 @@ export default class CourseGridComponent extends React.Component {
   };
 
   sortIcon = () => <FontAwesomeIcon
-      className='sort-icon'
+      className='wbdv-sort-icon'
       icon={this.props.sort.includes('desc') ? faSortDown : faSortUp}
   />;
+
   render() {
     return(
-        <div className='grid-container'>
-          <div className='title-bar course-grid-header'>
+        <div className='wbdv-grid-container'>
+          <div className='title-bar wbdv-course-grid-header'>
             <h2>Courses</h2>
-            <form className="add-course-chunk">
+            <form className="wbdv-add-course-chunk">
               <input
                   className="wbdv-field wbdv-new-course"
                   id="add-course-title"
@@ -49,40 +50,40 @@ export default class CourseGridComponent extends React.Component {
               >+</div>
             </form>
           </div>
-          <div className='grid-sort-bar'>
-            <div className='sort-button-row'>
+          <div className='wbdv-grid-sort-bar'>
+            <div className='wbdv-sort-button-row'>
               <div
-                  className='sort-button'
+                  className='wbdv-sort-button'
                   onClick={this.props.sortTitle}
               >
                 Title
                 {this.props.sort.includes('title') ? this.sortIcon() : null}
               </div>
               <div
-                  className='sort-button'
+                  className='wbdv-sort-button'
                   onClick={this.props.sortOwner}
               >
                 Owner
                 {this.props.sort.includes('owner') ? this.sortIcon() : null}
               </div>
               <div
-                  className='sort-button'
+                  className='wbdv-sort-button'
                   onClick={this.props.sortDate}
               >
                 Modified
                 {this.props.sort.includes('date') ? this.sortIcon() : null}
                 </div>
             </div>
-            <div className='table-btn-block'>
-              <div className='table-btn-label'>
+            <div className='wbdv-table-btn-block'>
+              <div className='wbdv-table-btn-label'>
                 List view:
               </div>
-              <div className='table-btn'>
+              <div className='wbdv-table-btn'>
                 {this.props.tableButton}
               </div>
             </div>
           </div>
-          <div className='class-grid'>
+          <div className='wbdv-class-grid'>
             {this.props.courses.map(course =>
                 <CourseCardComponent
                     refreshCourses={this.props.refreshCourses}

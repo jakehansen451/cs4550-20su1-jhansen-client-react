@@ -39,7 +39,7 @@ export default class CourseRowComponent extends React.Component {
   courseName = () =>
       this.state.editing ?
           <input
-              className="wbdv-field course-name-input"
+              className="wbdv-field wbdv-course-name-input"
               onChange={(event) => this.setState({
                 newCourseTitle: event.target.value
               })}
@@ -50,7 +50,7 @@ export default class CourseRowComponent extends React.Component {
 
   render() {
     return(
-        <tr className={this.state.editing ? 'highlighted' : ''}>
+        <tr className={this.state.editing ? 'wbdv-highlighted' : ''}>
           <td>
             <Link to={`/editor/${this.state.course._id}`} >
               <FontAwesomeIcon

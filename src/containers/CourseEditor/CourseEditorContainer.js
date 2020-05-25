@@ -86,15 +86,15 @@ export default class CourseEditorContainer extends React.Component {
             currentTab: this.state.currentTab,
             selectTab: this.selectTab,
           })}
-          <div className='modules-section'>
-            <div className='modules-list'>
+          <div className='wbdv-modules-section'>
+            <div className='wbdv-modules-list'>
             {ModuleListComponent({
               modules: !Utils.isEmpty(this.state.course) ? this.state.course.modules : [],
               selectedModule: this.state.selectedModule,
               selectModule: this.selectModule,
             })}
             </div>
-            <div className='topic-section'>
+            <div className='wbdv-topic-section'>
               <TopicViewContainer />
             </div>
           </div>
