@@ -1,0 +1,7 @@
+.wbdv-topic-pill {
+  color: var(--text-color);
+}
+
+.wbdv-topic-pill-list {
+  align-items: baseline;
+}

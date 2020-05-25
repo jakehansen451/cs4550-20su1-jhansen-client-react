@@ -1,4 +1,11 @@
 import React from 'react';
+import TopicPillsComponent from '../../../components/CourseEditor/TopicView/TopicPills/TopicPillsComponent';
+
+const dummyTopics = [
+    'Topic 1',
+    'Topic 2',
+    'Topic 3'
+];
 
 export default class TopicViewContainer extends React.Component {
 
@@ -6,22 +13,11 @@ export default class TopicViewContainer extends React.Component {
     return (
         <div className="row">
           <div className="topics-list col-9">
-            <div>
-              <ul className="nav nav-tabs topic-navbar wbdv-topic-pill-list">
-                <li className="nav-item">
-                  <a className="nav-link topic-link wbdv-topic-pill active topic-selected" href="#">Topic 1</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link topic-link wbdv-topic-pill" href="#">Topic 2</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link topic-link wbdv-topic-pill" href="#">Topic 3</a>
-                </li>
-                <li className="nav-item">
-                  <div className="nav-link topic-link icon-link wbdv-topic-add-btn" href="#">+</div>
-                </li>
-              </ul>
-            </div>
+            <TopicPillsComponent
+                topics={dummyTopics}
+                active={dummyTopics[0]}
+            />
+
             <div className="topic-content">
               <div>
                 <div className="section-header">
