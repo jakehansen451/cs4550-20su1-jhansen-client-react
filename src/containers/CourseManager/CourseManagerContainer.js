@@ -123,48 +123,50 @@ class CourseManagerContainer extends React.Component {
               </button>
             </div>
           </nav>
-          {
-            this.state.layout === 'table' &&
-            <div>
-              <CourseTableComponent
-                  gridButton={
-                    <FontAwesomeIcon
-                        icon={faTh}
-                        onClick={() => this.setLayout('grid')}
-                        className='icon-link switch-layout-btn'
-                    />
-                  }
-                  sortTitle={this.sortTitle}
-                  sortOwner={this.sortOwner}
-                  sortDate={this.sortDate}
-                  deleteCourse={this.deleteCourse}
-                  courses={this.sortCourses()}
-                  sort={this.state.sort}
-                  refreshCourses={this.refreshCourses}
-              />
-            </div>
-          }
-          {
-            this.state.layout === 'grid' &&
-            <div>
-              <CourseGridComponent
-                  tableButton={
-                    <FontAwesomeIcon
-                        icon={faBars}
-                        onClick={() => this.setLayout('table')}
-                        className='icon-link switch-layout-btn'
-                    />
-                  }
-                  sortTitle={this.sortTitle}
-                  sortOwner={this.sortOwner}
-                  sortDate={this.sortDate}
-                  deleteCourse={this.deleteCourse}
-                  courses={this.sortCourses()}
-                  sort={this.state.sort}
-                  refreshCourses={this.refreshCourses}
-              />
-            </div>
-          }
+          <div className='wbdv-padded-top'>
+            {
+              this.state.layout === 'table' &&
+              <div>
+                <CourseTableComponent
+                    gridButton={
+                      <FontAwesomeIcon
+                          icon={faTh}
+                          onClick={() => this.setLayout('grid')}
+                          className='icon-link switch-layout-btn'
+                      />
+                    }
+                    sortTitle={this.sortTitle}
+                    sortOwner={this.sortOwner}
+                    sortDate={this.sortDate}
+                    deleteCourse={this.deleteCourse}
+                    courses={this.sortCourses()}
+                    sort={this.state.sort}
+                    refreshCourses={this.refreshCourses}
+                />
+              </div>
+            }
+            {
+              this.state.layout === 'grid' &&
+              <div>
+                <CourseGridComponent
+                    tableButton={
+                      <FontAwesomeIcon
+                          icon={faBars}
+                          onClick={() => this.setLayout('table')}
+                          className='icon-link switch-layout-btn'
+                      />
+                    }
+                    sortTitle={this.sortTitle}
+                    sortOwner={this.sortOwner}
+                    sortDate={this.sortDate}
+                    deleteCourse={this.deleteCourse}
+                    courses={this.sortCourses()}
+                    sort={this.state.sort}
+                    refreshCourses={this.refreshCourses}
+                />
+              </div>
+            }
+          </div>
         </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import ModuleListComponent from './ModuleList/ModuleListComponent.js';
+import ModuleNavbarComponent from './ModuleNavbar/ModuleNavbarComponent';
 
 const dummyModule = {
   name: 'Module 1',
@@ -57,47 +57,8 @@ export default class CourseEditorComponent extends React.Component {
   render() {
     return(
         <div>
-          <Link to="/courses/">
-            Back
-          </Link>
-
-          <nav className="navbar navbar-light editor-main-navbar">
-            <div>
-              <a
-                  className="fa fa-arrow-circle-left wbdv-course-editor wbdv-close icon-link"
-                  href="../course-list/course-list.template.client.html"
-              >
-              </a>
-              <div className="navbar-brand wbdv-course-title" href="#">CS4550 - WebDev</div>
-            </div>
-            <ul className="editor-navbar-content navbar-nav mr-auto">
-              <li className="nav-item editor-navbar-content-item active wbdv-page-tab">
-                <a className="nav-link" href="#" aria-disabled="true">Pages</a>
-              </li>
-
-              <li className="nav-item editor-navbar-content-item">
-                <a className="nav-link" href="#" aria-disabled="true">Build</a>
-              </li>
-
-              <li className="nav-item editor-navbar-content-item">
-                <a className="nav-link" href="#" aria-disabled="true">Theme</a>
-              </li>
-
-              <li className="nav-item editor-navbar-content-item">
-                <a className="nav-link" href="#" aria-disabled="true">Store</a>
-              </li>
-
-              <li className="nav-item editor-navbar-content-item">
-                <a className="nav-link" href="#" aria-disabled="true">Apps</a>
-              </li>
-
-              <li className="nav-item editor-navbar-content-item">
-                <a className="nav-link icon-link wbdv-new-page-btn" href="#" aria-disabled="true">+</a>
-              </li>
-            </ul>
-          </nav>
-
-          { ModuleListComponent({
+          {ModuleNavbarComponent({title: this.state.course.title})}
+          {ModuleListComponent({
             modules: this.state.course.modules,
             selectedModule: this.state.selectedModule,
             selectModule: this.selectModule,

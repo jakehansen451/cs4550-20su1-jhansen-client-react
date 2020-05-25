@@ -7,11 +7,6 @@
   margin: 5px;
 }
 
-.wbdv-module-btn {
-  background-color: inherit;
-  border: none;
-}
-
 .wbdv-module-item {
   display: flex;
   flex-wrap: wrap;

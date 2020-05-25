@@ -1,5 +1,5 @@
-body {
-  padding-top: 77px;
+.wbdv-padded-top {
+  padding-top: 57px;
 }
 
 .course-list-search-navbar {
@@ -57,14 +57,14 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  body {
-    padding-top: 117px;
+  .wbdv-padded-top {
+    padding-top: 92px;
   }
 }
 
 @media screen and (max-width: 390px) {
-  body {
-    padding-top: 149px;
+  .wbdv-padded-top {
+    padding-top: 124px;
   }
 
   .search-chunk {
