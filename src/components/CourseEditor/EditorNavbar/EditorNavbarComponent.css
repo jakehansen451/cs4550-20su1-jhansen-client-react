@@ -7,8 +7,15 @@
 .wbdv-navbar-content {
   flex-direction: row;
   align-items: baseline;
+  margin-right: auto;
 }
 
 .wbdv-new-page-btn {
   color: var(--text-color);
+}
+
+@media screen and (max-width: 490px) {
+  .wbdv-navbar-content {
+    flex-wrap: wrap;
+  }
 }

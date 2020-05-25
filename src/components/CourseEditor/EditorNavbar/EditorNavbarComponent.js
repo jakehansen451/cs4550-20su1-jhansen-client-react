@@ -20,7 +20,7 @@ const EditorNavbarComponet = (props) => {
         </div>
 
 
-        <ul className="wbdv-navbar-content navbar-nav mr-auto">
+        <ul className="wbdv-navbar-content navbar-nav">
           {props.tabs.map((tab) => LessonTabsComponent({
             tab: tab,
             selected: tab === props.currentTab,
