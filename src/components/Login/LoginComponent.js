@@ -1,23 +1,24 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import './LoginComponent.css';
 
 const LoginComponent = () => {
   return (
       <div>
-        <div className="title-bar">
+        <div className="wbdv-title-bar">
           <h1>Sign In</h1>
 
           <Link
-              className="cancel-btn wbdv-button btn green-btn"
+              className="wbdv-cancel-btn wbdv-button btn wbdv-green-btn"
               to='/'
           >
             Cancel
           </Link>
         </div>
         <form>
-          <div className="form-group input-form-row">
+          <div className="form-group wbdv-input-form-row">
             <label htmlFor="usr"
-                   className="col-form-label input-label">Username</label>
+                   className="col-form-label wbdv-input-label">Username</label>
 
             <input
                 className="wbdv-field wbdv-username col"
@@ -28,9 +29,9 @@ const LoginComponent = () => {
             />
           </div>
 
-          <div className="form-group input-form-row">
+          <div className="form-group wbdv-input-form-row">
             <label htmlFor="pwd"
-                   className="col-form-label input-label">Password</label>
+                   className="col-form-label wbdv-input-label">Password</label>
 
             <input
                 id="pwd"
@@ -44,7 +45,7 @@ const LoginComponent = () => {
 
         <div>
           <Link
-              className="wbdv-button wbdv-login btn green-btn"
+              className="wbdv-button wbdv-login btn wbdv-green-btn"
               to='/profile/'
           >
             Login
@@ -53,7 +54,7 @@ const LoginComponent = () => {
           <div className="wbdv-login-zone-links">
             <Link
                 className="wbdv-link wbdv-forgot-password"
-                to='/error/'
+                to='/wip/'
             >
               Forgot your password?
             </Link>

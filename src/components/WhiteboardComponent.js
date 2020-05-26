@@ -6,6 +6,7 @@ import HomeComponent from "./Home/HomeComponent";
 import LoginComponent from "./Login/LoginComponent";
 import WIPComponent from './Error/WIPComponent';
 import RegisterComponent from './Register/RegisterComponent';
+import ProfileComponent from './Profile/ProfileComponent';
 
 class WhiteboardComponent extends React.Component {
   render() {
@@ -51,7 +52,7 @@ class WhiteboardComponent extends React.Component {
             <Route
                 path='/profile/'
                 exact
-                compoonent={ProfileComponent}/>
+                component={ProfileComponent}/>
 
             <Route
                 path='/login/'

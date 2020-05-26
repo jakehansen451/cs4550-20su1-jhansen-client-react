@@ -1,0 +1,16 @@
+.wbdv-cancel-btn {
+  max-width: 100px;
+  font-size: medium;
+}
+
+.wbdv-input-form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wbdv-input-label {
+  flex-basis: 0;
+  flex-grow: 1;
+  min-width: 125px;
+  font-size: large;
+}

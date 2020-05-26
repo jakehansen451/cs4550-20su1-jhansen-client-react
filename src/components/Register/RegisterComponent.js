@@ -1,24 +1,25 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import './RegisterComponent.css';
 
 const RegisterComponent = () => {
   return (
       <div>
-        <div className="title-bar">
+        <div className="wbdv-title-bar">
           <h1>Register</h1>
 
-          <a
-              className="cancel-btn wbdv-button btn green-btn"
-              href="../index.html"
+          <Link
+              className="wbdv-ccancel-btn wbdv-button btn wbdv-green-btn"
+              to="/"
           >
             Cancel
-          </a>
+          </Link>
         </div>
 
-        <form className="register-form">
-          <div className="form-group input-form-row">
+        <form>
+          <div className="form-group wbdv-input-form-row">
             <label htmlFor="usr"
-                   className="col-form-label input-label">Username</label>
+                   className="col-form-label wbdv-input-label">Username</label>
 
             <input
                 className="wbdv-field wbdv-username register-input-field col"
@@ -29,9 +30,9 @@ const RegisterComponent = () => {
             />
           </div>
 
-          <div className="form-group input-form-row">
+          <div className="form-group wbdv-input-form-row">
             <label htmlFor="pwd"
-                   className="col-form-label input-label">Password</label>
+                   className="col-form-label wbdv-input-label">Password</label>
 
             <input id="pwd"
                    className="wbdv-field wbdv-password col"
@@ -41,8 +42,8 @@ const RegisterComponent = () => {
             />
           </div>
 
-          <div className="form-group input-form-row">
-            <label htmlFor="verify-pwd" className="col-form-label input-label">Verify
+          <div className="form-group wbdv-input-form-row">
+            <label htmlFor="verify-pwd" className="col-form-label wbdv-input-label">Verify
               Password</label>
 
             <input id="verify-pwd"
@@ -55,20 +56,20 @@ const RegisterComponent = () => {
         </form>
 
         <div>
-          <a
-              href="../profile/profile.template.client.html"
-              className="wbdv-button wbdv-register btn green-btn"
+          <Link
+              className="wbdv-button wbdv-register btn wbdv-green-btn"
+              to='/profile/'
           >
             Register
-          </a>
+          </Link>
 
           <div>
-            <a
-                href="../login/login.template.client.html"
+            <Link
                 className="wbdv-link wbdv-login"
+                to='/login/'
             >
               Already have an account? Click here to log in
-            </a>
+            </Link>
           </div>
         </div>
       </div>

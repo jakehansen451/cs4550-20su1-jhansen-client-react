@@ -1,0 +1,17 @@
+.wbdv-profile-title-bar {
+  margin-bottom: 0.5rem;
+}
+
+.wbdv-update {
+  margin-bottom: 1rem;
+}
+
+.wbdv-logout {
+  border-color: var(--dark-red);
+}
+
+.wbdv-green-alert {
+  background-color: var(--lightest-green);
+  border-color: var(--lighter-green);
+  color: var(--dark-green);
+}

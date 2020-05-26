@@ -7,3 +7,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.wbdv-cancel-btn {
+  max-width: 100px;
+  font-size: medium;
+}
+
+.wbdv-input-form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
