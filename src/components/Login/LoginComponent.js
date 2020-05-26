@@ -49,7 +49,7 @@ const LoginComponent = () => {
             Login
           </Link>
 
-          <div className="login-zone-links">
+          <div className="wbdv-login-zone-links">
             <Link
                 className="wbdv-link wbdv-forgot-password"
                 to='/error/'

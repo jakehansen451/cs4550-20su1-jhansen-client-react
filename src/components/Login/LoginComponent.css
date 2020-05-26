@@ -1,0 +1,9 @@
+.wbdv-login {
+  margin: 0 0 5px 0;
+}
+
+.wbdv-login-zone-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
