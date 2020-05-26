@@ -20,10 +20,7 @@ export default class CourseCardComponent extends React.Component {
 
   componentDidUpdate = () => {
     if (this.state.course !== this.props.course) {
-      this.setState({
-        ...this.sate,
-        course: this.props.course
-      })
+      this.setState({course: this.props.course})
     }
   };
 

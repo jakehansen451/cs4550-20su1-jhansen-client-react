@@ -19,7 +19,10 @@ export default class CourseTableComponent extends React.Component {
         owner: 'me',
         modified: (new Date()).toISOString()
       })
-      .then(theActualNewCourse => this.props.refreshCourses());
+      .then(theActualNewCourse => {
+        this.props.refreshCourses();
+        this.setState({newCourseTitle: ''});
+      });
     } else {
       alert('New course title cannot be empty.');
     }
