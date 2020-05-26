@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Redirect} from "react-router-dom";
 import HomeComponent from "./Home/HomeComponent";
 import LoginComponent from "./Login/LoginComponent";
 import WIPComponent from './Error/WIPComponent';
+import RegisterComponent from './Register/RegisterComponent';
 
 class WhiteboardComponent extends React.Component {
   render() {
@@ -56,6 +57,11 @@ class WhiteboardComponent extends React.Component {
                 path='/login/'
                 exact
                 component={LoginComponent}/>
+
+            <Route
+                path='/register/'
+                exact
+                component={RegisterComponent}/>
 
             <Route
                 path='/wip/'
