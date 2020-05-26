@@ -3,7 +3,8 @@ import CourseManagerContainer from "../containers/CourseManager/CourseManagerCon
 import CourseEditorContainer from "../containers/CourseEditor/CourseEditorContainer";
 import {BrowserRouter, Route, Redirect} from "react-router-dom";
 import HomeComponent from "./Home/HomeComponent";
-import LoginComponent from "./LoginComponent";
+import LoginComponent from "./Login/LoginComponent";
+import WIPComponent from './Error/WIPComponent';
 
 class WhiteboardComponent extends React.Component {
   render() {
@@ -18,8 +19,6 @@ class WhiteboardComponent extends React.Component {
                   props => <Redirect to={`${props.location.pathname}/`}/>
                 }
             />
-
-            <Route path="/login" exact={true} component={LoginComponent}/>
 
             {/*TODO: port over registraion, profile components*/}
 
@@ -47,6 +46,21 @@ class WhiteboardComponent extends React.Component {
                 path='/editor/*'
                 exact
                 component={CourseEditorContainer}/>
+
+            <Route
+                path='/profile/'
+                exact
+                compoonent={ProfileComponent}/>
+
+            <Route
+                path='/login/'
+                exact
+                component={LoginComponent}/>
+
+            <Route
+                path='/wip/'
+                exact
+                component={WIPComponent}/>
 
           </div>
         </BrowserRouter>
