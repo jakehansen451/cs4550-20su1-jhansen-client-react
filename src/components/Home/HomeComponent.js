@@ -24,10 +24,6 @@ const HomeComponent = () =>
         View your profile
       </Link>
       <br/>
-      <Link to='/editor/'>
-        Edit courses
-      </Link>
-      <br/>
     </div>;
 
 export default HomeComponent

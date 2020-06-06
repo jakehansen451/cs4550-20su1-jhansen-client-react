@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import CourseManagerContainer from "../containers/CourseManager/CourseManagerContainer";
 import CourseEditorContainer from "../containers/CourseEditor/CourseEditorContainer";
 import {BrowserRouter, Route, Redirect} from "react-router-dom";
@@ -8,7 +8,11 @@ import WIPComponent from './Error/WIPComponent';
 import RegisterComponent from './Register/RegisterComponent';
 import ProfileComponent from './Profile/ProfileComponent';
 
-class WhiteboardComponent extends React.Component {
+class WhiteboardComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return(
         <BrowserRouter>
@@ -43,11 +47,6 @@ class WhiteboardComponent extends React.Component {
                 path='/courses/:layout/'
                 exact
                 component={CourseManagerContainer}/>
-
-            <Route
-                path='/editor/'
-                exact
-                component={CourseEditorContainer}/>
 
             <Route
                 path='/editor/:id'
