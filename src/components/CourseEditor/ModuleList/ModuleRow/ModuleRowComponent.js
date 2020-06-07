@@ -44,6 +44,7 @@ class ModuleRowComponent extends React.Component {
         <li
             key={this.props.key}
             className={this.props.module._id === this.props.selected_module._id
+                || this.state.editing
                 ?
                 'list-group-item wbdv-module-item wbdv-module-selected' :
                 'list-group-item wbdv-module-item'}
@@ -76,12 +77,21 @@ class ModuleRowComponent extends React.Component {
                       icon={faEdit}/>
                 </button>
             }
+            {this.state.editing ?
+                <button
+                    className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
+                    onClick={this.toggleEditing}
+                >
+                  X
+                </button>
+                :
+                <button
+                    className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
+                    onClick={() => this.removeModule(this.props.module._id)}>
+                  X
+                </button>
+            }
 
-            <button
-                className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
-                onClick={() => this.removeModule(this.props.module._id)}
-            >X
-            </button>
           </div>
         </li>
     )

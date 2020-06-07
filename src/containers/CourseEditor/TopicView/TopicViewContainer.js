@@ -1,12 +1,14 @@
 import React from 'react';
 import TopicPillsComponent
-  from '../../../components/CourseEditor/TopicView/TopicPills/TopicPillsComponent';
+  from '../../../components/CourseEditor/LessonTabs/TopicPills/TopicPillsComponent';
 import WidgetContainer from "./WidgetContainer/WidgetContainer";
 
-const TopicViewContainer = () => {
+const TopicViewContainer = (props) => {
   return (
       <div>
-        <TopicPillsComponent/>
+        <TopicPillsComponent
+            topics={props.topics}
+        />
         <WidgetContainer/>
       </div>
   )

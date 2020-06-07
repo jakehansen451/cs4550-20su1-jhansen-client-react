@@ -68,15 +68,13 @@ class CourseEditorContainer extends React.Component {
             />
             </div>
             <div className='wbdv-topic-section'>
-              {/*
-              <TopicViewContainer
+              {<TopicViewContainer
                   topics={Utils.isEmpty(this.props.selected_lesson)
                       ? []
                       : this.props.topics.filter(topic =>
                           topic.lessonId === this.props.selected_lesson._id)
                   }
-              />
-              */}
+              />}
             </div>
           </div>
         </div>
