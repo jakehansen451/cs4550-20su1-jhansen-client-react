@@ -1,10 +1,4 @@
 // Actions
-import {
-  CREATE_TOPIC, DELETE_TOPIC,
-  FIND_TOPIC,
-  FIND_TOPICS_FOR_COURSE, UPDATE_TOPIC
-} from "./LessonReducer";
-
 export const CREATE_TOPIC = 'CREATE_TOPIC';
 export const FIND_TOPICS_FOR_COURSE = 'FIND_TOPICS_FOR_COURSE';
 export const FIND_TOPIC = 'FIND_TOPIC';

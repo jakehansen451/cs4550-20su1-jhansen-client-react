@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from 'react-redux';
 import ModuleListComponent from '../../components/CourseEditor/ModuleList/ModuleListComponent';
 import EditorNavbarComponent from '../../components/CourseEditor/EditorNavbar/EditorNavbarComponent';
 import TopicViewContainer from './TopicView/TopicViewContainer';
@@ -6,67 +7,32 @@ import CourseService from '../../services/CourseService';
 import Utils from '../../utils/Utils';
 import './CourseEditorContainer.css';
 
-const dummyModules = [
-  {
-    name: 'Module 1',
-    topics: [
-        {
-          name: 'Topic 1',
-          widgets: [
-            { name: 'Widget 1', type: 'heading' },
-            { name: 'Widget 2', type: 'heading' },
-          ]
-        },
-      {
-        name: 'Topic 2',
-        widgets: [
-            { name: 'Widget 1', type: 'heading' },
-        ]
-      },
-    ],
-  },
-  {
-    name: 'Module 2',
-    topics: [
-      {
-        name: 'Topic 1',
-        widgets: [
-          { name: 'Widget 1', type: 'heading' },
-          { name: 'Widget 2', type: 'heading' },
-          { name: 'Widget 3', type: 'heading' },
-        ]
-      }
-    ],
-  }
-];
-
 const dummyTabs = ['Build', 'Pages', 'Theme', 'Store', 'Apps'];
 
-export default class CourseEditorContainer extends React.Component {
+class CourseEditorContainer extends React.Component {
   state = {
     currentTab: 'Pages',
     course: {},
-    selectedModule: {},
+    selectedModuleId: {},
   };
 
-  getCourseIDFromURL = () =>
-      window.location.pathname.replace('/editor/', '').replace('/', '');
-
   componentDidMount() {
-    const id = this.getCourseIDFromURL();
+    const id = this.props.match.params.id;
     CourseService.findCourseById(id)
     .then((actualCourse) => {
       const course = {
         ...actualCourse,
-        modules: dummyModules,
         tabs: dummyTabs,
         currentTab: 'Pages',
       };
-      const selectedModule = course.modules.length > 0
-          ? course.modules[0]
-          : {};
-      this.setState({...this.state, course: course, selectedModule: selectedModule});
-    });
+      this.setState({
+        ...this.state,
+        course: course,
+        selectedModuleId: (this.props.modules.find(module => module._id === id)
+            || {_id: ''})
+            ._id
+      });
+    });co
   };
 
   selectModule = (module) =>
@@ -90,19 +56,27 @@ export default class CourseEditorContainer extends React.Component {
           <div className='wbdv-modules-section'>
             <div className='wbdv-modules-list'>
             {ModuleListComponent({
-              modules: !Utils.isEmpty(this.state.course) ? this.state.course.modules : [],
-              selectedModule: this.state.selectedModule,
+              modules: this.props.modules,
+              selectedModuleId: this.state.selectedModuleId,
               selectModule: this.selectModule,
             })}
             </div>
             <div className='wbdv-topic-section'>
               <TopicViewContainer
-                  topics={!Utils.isEmpty(this.state.selectedModule)
-                      ? this.state.selectedModule.topics
-                      : []}
+                  topics={
+                    this.props.topics.filter(topic =>
+                        topic.moduleId === this.state.selectedModuleId)
+                  }
               />
             </div>
           </div>
         </div>
   )}
 }
+
+const mapStateToProps = (state) => ({
+  modules: state.modules,
+  topics: state.topics
+});
+
+export default connect(mapStateToProps, null)(CourseEditorContainer);

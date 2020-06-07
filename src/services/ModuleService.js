@@ -7,7 +7,7 @@ export const createModule = (courseId, module) =>
       headers: {'content-type': 'application/json'}
     }).then(response => response.json());
 
-export const findModuleForCourse = (courseId) =>
+export const findModulesForCourse = (courseId) =>
     fetch(`${url}/courses/${courseId}/modules`)
     .then(response => response.json());
 
