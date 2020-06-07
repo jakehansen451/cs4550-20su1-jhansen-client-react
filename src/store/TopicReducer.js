@@ -1,4 +1,10 @@
 // Actions
+import {
+  CREATE_TOPIC, DELETE_TOPIC,
+  FIND_TOPIC,
+  FIND_TOPICS_FOR_COURSE, UPDATE_TOPIC
+} from "./LessonReducer";
+
 export const CREATE_TOPIC = 'CREATE_TOPIC';
 export const FIND_TOPICS_FOR_COURSE = 'FIND_TOPICS_FOR_COURSE';
 export const FIND_TOPIC = 'FIND_TOPIC';
@@ -24,4 +30,22 @@ export const update_topic = (topicId) => {
 
 export const delete_topic = (topicId) => {
   return {type: DELETE_TOPIC, topicId}
+};
+
+// Reducers
+export const topicReducer = (topics = [], action) => {
+  switch(action.type) {
+    case CREATE_TOPIC:
+      return [...topics, action.topic];
+    case FIND_TOPICS_FOR_COURSE:
+      return topics.filter(topic => topic.lessonId === action.lessonId);
+    case FIND_TOPIC:
+      return topics.find(topic => topic._id === action.topicId);
+    case UPDATE_TOPIC:
+      return [...(topics.filter(topic => topic._id === action.topicId)), action.topic];
+    case DELETE_TOPIC:
+      return topics.filter(topic => topic._id !== action.topicId);
+    default:
+      return topics;
+  }
 };

@@ -18,10 +18,28 @@ export const find_lesson = (lessonId) => {
   return {type: FIND_LESSON, lessonId}
 };
 
-export const update_lesson = (lessonId) => {
+export const update_lesson = (lessonId, lesson) => {
   return {type: UPDATE_LESSON, lessonId}
 };
 
 export const delete_lesson = (lessonId) => {
   return {type: DELETE_LESSON, lessonId}
+};
+
+// Reducers
+export const lessonReducer = (lessons = [], action) => {
+  switch(action.type) {
+    case CREATE_LESSON:
+      return [...lessons, action.lesson];
+    case FIND_LESSONS_FOR_COURSE:
+      return lessons.filter(lesson => lesson.moduleId === action.moduleId);
+    case FIND_LESSON:
+      return lessons.find(lesson => lesson._id === action.lessonId);
+    case UPDATE_LESSON:
+      return [...(lessons.filter(lesson => lesson._id === action.lessonId)), action.lesson];
+    case DELETE_LESSON:
+      return lessons.filter(lesson => lesson._id !== action.lessonId);
+    default:
+      return lessons;
+  }
 };
