@@ -2,6 +2,7 @@ import { moduleReducer } from "./ModuleReducer";
 import { selectedModuleReducer } from "./SelectedModuleReducer";
 import { lessonReducer} from "./LessonReducer";
 import { topicReducer } from "./TopicReducer";
+import { selectedTopicReducer } from "./SelectedTopicReducer";
 
 const startState = {
   modules: [],
@@ -16,6 +17,6 @@ export const rootReducer = (state = startState, action) => {
     lessons: lessonReducer(state.lessons, action),
     // selected_lesson: selectedLessonReducer(state.selected_lesson, action),
     topics: topicReducer(state.topics, action),
-    // selected_topic: selectedTopicReducer(state.selected_topic, action),
+    selected_topic: selectedTopicReducer(state.selected_topic, action),
   }
 };
