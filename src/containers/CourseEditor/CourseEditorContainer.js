@@ -13,7 +13,6 @@ class CourseEditorContainer extends React.Component {
   state = {
     currentTab: 'Pages',
     course: {},
-    selectedModuleId: {},
   };
 
   componentDidMount() {
@@ -27,16 +26,10 @@ class CourseEditorContainer extends React.Component {
       };
       this.setState({
         ...this.state,
-        course: course,
-        selectedModuleId: (this.props.modules.find(module => module._id === id)
-            || {_id: ''})
-            ._id
+        course: course
       });
-    });co
+    });
   };
-
-  selectModule = (module) =>
-      this.setState({...this.state, selectedModule: module});
 
   selectTab = (tabName) =>
     alert('Selected tab '.concat(tabName));
@@ -55,17 +48,13 @@ class CourseEditorContainer extends React.Component {
           })}
           <div className='wbdv-modules-section'>
             <div className='wbdv-modules-list'>
-            {ModuleListComponent({
-              modules: this.props.modules,
-              selectedModuleId: this.state.selectedModuleId,
-              selectModule: this.selectModule,
-            })}
+            <ModuleListComponent />
             </div>
             <div className='wbdv-topic-section'>
               <TopicViewContainer
                   topics={
                     this.props.topics.filter(topic =>
-                        topic.moduleId === this.state.selectedModuleId)
+                        topic.moduleId === this.props.selected_module._id)
                   }
               />
             </div>
@@ -76,6 +65,7 @@ class CourseEditorContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   modules: state.modules,
+  selected_module: state.selected_module,
   topics: state.topics
 });
 
