@@ -52,9 +52,10 @@ class CourseEditorContainer extends React.Component {
             </div>
             <div className='wbdv-topic-section'>
               <TopicViewContainer
-                  topics={
-                    this.props.topics.filter(topic =>
-                        topic.moduleId === this.props.selected_module._id)
+                  topics={Utils.isEmpty(this.props.selected_lesson)
+                      ? []
+                      : this.props.topics.filter(topic =>
+                          topic.lessonId === this.props.selected_lesson._id)
                   }
               />
             </div>
@@ -65,7 +66,7 @@ class CourseEditorContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   modules: state.modules,
-  selected_module: state.selected_module,
+  selected_lesson: state.selected_lesson,
   topics: state.topics
 });
 
