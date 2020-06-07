@@ -1,24 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {select_module} from '../../../store/SelectedModuleReducer';
 import '../../../styles.css';
 import './ModuleListComponent.css';
 
-const ModuleListComponent = (props) => {
-  const moduleItem = (module) =>
+class ModuleListComponent extends React.Component {
+  moduleItem = (module) => (
       <li
-          key={module.name}
-          className={module.name === props.selectedModule.name ?
+          key={module._id}
+          className={module._id === this.props.selected_module._id ?
               'list-group-item wbdv-module-item wbdv-module-selected' :
               'list-group-item wbdv-module-item'}
-          onClick={() => props.selectModule(module)}
+          onClick={() => this.props.select_module(module)}
       >
         <div>{module.name}</div>
         <button
             className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
             onClick={() => alert('Pretending to delete module')}
         >X</button>
-      </li>;
+      </li>
+  );
 
-  return(
+
+  render() {
+    return(
       <div>
         <div className="wbdv-module-list-header">
           <div>Modules</div>
@@ -29,10 +34,18 @@ const ModuleListComponent = (props) => {
         </div>
 
         <ul className="list-group wbdv-module-list">
-          {props.modules.map(moduleItem)}
+          {this.props.modules.map(this.moduleItem)}
         </ul>
       </div>
-  )
-};
+  )}
+}
 
-export default ModuleListComponent;
+const mapStateToProps = (state) => ({
+  selected_module: state.selected_module,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  select_module: (module) => dispatch(select_module(module))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModuleListComponent);

@@ -48,9 +48,15 @@ class CourseEditorContainer extends React.Component {
           })}
           <div className='wbdv-modules-section'>
             <div className='wbdv-modules-list'>
-            <ModuleListComponent />
+            <ModuleListComponent
+                modules={this.props.modules.filter(
+                    module => module.courseId === this.state.course._id
+                )}
+                courseId={this.state.course._id}
+            />
             </div>
             <div className='wbdv-topic-section'>
+              {/*
               <TopicViewContainer
                   topics={Utils.isEmpty(this.props.selected_lesson)
                       ? []
@@ -58,6 +64,7 @@ class CourseEditorContainer extends React.Component {
                           topic.lessonId === this.props.selected_lesson._id)
                   }
               />
+              */}
             </div>
           </div>
         </div>
