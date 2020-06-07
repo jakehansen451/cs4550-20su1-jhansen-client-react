@@ -6,8 +6,8 @@ export const UPDATE_LESSON = 'UPDATE_LESSON';
 export const DELETE_LESSON = 'DELETE_LESSON';
 
 // Action creators
-export const create_lesson = (lesson) => {
-  return {type: CREATE_LESSON, lesson}
+export const create_lesson = (moduleId, lesson) => {
+  return {type: CREATE_LESSON, moduleId, lesson}
 };
 
 export const find_lessons_for_module = (moduleId) => {

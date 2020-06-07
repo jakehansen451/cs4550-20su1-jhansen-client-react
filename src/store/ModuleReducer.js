@@ -6,8 +6,8 @@ export const UPDATE_MODULE = 'UPDATE_MODULE';
 export const DELETE_MODULE = 'DELETE_MODULE';
 
 // Action creators
-export const create_module = (module) => {
-  return {type: CREATE_MODULE, module}
+export const create_module = (courseId, module) => {
+  return {type: CREATE_MODULE, courseId, module}
 };
 
 export const find_modules_for_course = (courseId) => {
