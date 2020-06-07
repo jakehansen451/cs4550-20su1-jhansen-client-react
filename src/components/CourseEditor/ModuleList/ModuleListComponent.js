@@ -1,24 +1,24 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {select_module} from '../../../store/SelectedModuleReducer';
+import React from "react"
+import { connect } from 'react-redux'
+import {create_module, delete_module} from "../../../store/ModuleReducer";
+import ModuleService from "../../../services/ModuleService";
+import ModuleRowComponent from './ModuleRow/ModuleRowComponent';
 import '../../../styles.css';
 import './ModuleListComponent.css';
 
 class ModuleListComponent extends React.Component {
-  moduleItem = (module) => (
-      <li
-          key={module._id}
-          className={module._id === this.props.selected_module._id ?
-              'list-group-item wbdv-module-item wbdv-module-selected' :
-              'list-group-item wbdv-module-item'}
-          onClick={() => this.props.select_module(module)}
-      >
-        <div>{module.name}</div>
-        <button
-            className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
-            onClick={() => alert('Pretending to delete module')}
-        >X</button>
-      </li>
+
+  addModule = () => {
+    const module = {
+      name: 'New Module',
+      courseId: this.props.courseId
+    };
+    ModuleService.createModule(this.props.courseId, module)
+    .then(actualModule => this.props.addModule(actualModule));
+  };
+
+  moduleRow = (module, index) => (
+    <ModuleRowComponent module={module} key={index}/>
   );
 
 
@@ -29,12 +29,12 @@ class ModuleListComponent extends React.Component {
           <div>Modules</div>
           <button
               className="wbdv-icon-link wbdv-btn"
-              onClick={() => alert('Pretending to add module')}
+              onClick={this.addModule}
           >+</button>
         </div>
 
         <ul className="list-group wbdv-module-list">
-          {this.props.modules.map(this.moduleItem)}
+          {this.props.modules.map(this.moduleRow)}
         </ul>
       </div>
   )}
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  select_module: (module) => dispatch(select_module(module))
+  addModule: (module) => dispatch(create_module(module)),
+  removeModule: (moduleId) => dispatch(delete_module(moduleId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModuleListComponent);
