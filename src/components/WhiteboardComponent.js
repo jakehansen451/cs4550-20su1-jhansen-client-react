@@ -9,10 +9,6 @@ import RegisterComponent from './Register/RegisterComponent';
 import ProfileComponent from './Profile/ProfileComponent';
 
 class WhiteboardComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return(
         <BrowserRouter>

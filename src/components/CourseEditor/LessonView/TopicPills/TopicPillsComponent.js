@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {create_topic, set_topics} from "../../../../store/TopicReducer";
+import {create_topic} from "../../../../store/TopicReducer";
 import TopicPillComponent from "./TopicPillComponent";
 import TopicService from '../../../../services/TopicService';
+import WidgetContainer
+  from "../../../../containers/CourseEditor/LessonView/WidgetContainer/WidgetContainer";
+import Utils from '../../../../utils/Utils';
 
 class TopicPillsComponent extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -37,6 +40,7 @@ class TopicPillsComponent extends React.Component {
               </div>
             </li>
           </ul>
+          {!Utils.isEmpty(this.props.selected_topic) && <WidgetContainer/>}
         </div>
     )
   }

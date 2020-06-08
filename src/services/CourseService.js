@@ -17,9 +17,9 @@ const updateCourse = (courseId, course) =>
 
 const deleteCourse = (courseId) => {
   ModuleService.findAllModules(courseId)
-  .then(modules => modules.map(module => {
+  .then(modules => modules.map(module =>
     ModuleService.deleteModule(module._id)
-  }));
+  ));
   return fetch(`${url}/courses/${courseId}`, {method: 'DELETE'})
   .then(response => response.json());
 };

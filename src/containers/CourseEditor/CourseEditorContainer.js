@@ -6,11 +6,10 @@ import ModuleService from "../../services/ModuleService";
 import ModuleListComponent from '../../components/CourseEditor/ModuleList/ModuleListComponent';
 import EditorNavbarComponent from '../../components/CourseEditor/EditorNavbar/EditorNavbarComponent';
 import CourseService from '../../services/CourseService';
-import Utils from '../../utils/Utils';
 import './CourseEditorContainer.css';
 import LessonTabsComponent
   from "../../components/CourseEditor/LessonView/LessonTabsComponent";
-import LessonService from "../../services/LessonService";
+import {select_module} from "../../store/SelectedModuleReducer";
 
 const dummyTabs = ['Build', 'Pages', 'Theme', 'Store', 'Apps'];
 
@@ -27,7 +26,10 @@ class CourseEditorContainer extends React.Component {
     .then(actualCourse => this.props.loadCourse(actualCourse));
 
     ModuleService.findModulesForCourse(id)
-    .then(actualModules => this.props.loadModules(actualModules));
+    .then(actualModules => {
+      this.props.loadModules(actualModules);
+      this.props.modules.length > 0 && this.props.selectModule(this.props.modules[0]);
+    });
 
     this.props.filterModules(id);
 
@@ -53,13 +55,13 @@ class CourseEditorContainer extends React.Component {
   render() {
     return(
         <div>
-          {EditorNavbarComponent({
-            title: (this.props.selected_course || {title: ''}).title,
-            tabs: this.state.tabs,
-            currentTab: this.state.currentTab,
-            selectTab: this.selectTab,
-            addTab: this.addTab,
-          })}
+          <EditorNavbarComponent
+            title={(this.props.selected_course || {title: ''}).title}
+            tabs={this.state.tabs}
+            currentTab={this.state.currentTab}
+            selectTab={this.selectTab}
+            addTab={this.addTab}
+          />
           <div className='wbdv-modules-section'>
             <div className='wbdv-modules-list'>
             <ModuleListComponent
@@ -88,6 +90,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadCourse: (course) => dispatch(select_course(course)),
   loadModules: (modules) => dispatch(set_modules(modules)),
+  selectModule: (module) => dispatch(select_module(module)),
   filterModules: (courseId) => dispatch(find_modules_for_course(courseId)),
 });
 

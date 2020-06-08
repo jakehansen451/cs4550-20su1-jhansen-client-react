@@ -33,7 +33,12 @@ class ModuleRowComponent extends React.Component {
 
   removeModule = () => {
     ModuleService.deleteModule(this.props.module._id)
-    .then(response => this.props.removeModule(this.props.module._id))
+    .then(response => this.props.removeModule(this.props.module._id));
+    ModuleService.findModulesForCourse(this.props.selected_course._id)
+    .then(modules => {
+      const newSelectedModule = modules.length > 0 ? modules[0] : {};
+      this.props.selectModule(newSelectedModule);
+    });
   };
 
   render() {
@@ -97,6 +102,7 @@ class ModuleRowComponent extends React.Component {
 
 const mapStateToProps = (state) => ({
   selected_module: state.selected_module,
+  selected_course: state.selected_course,
 });
 
 const mapDispatchToProps = (dispatch) => ({

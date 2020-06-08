@@ -16,4 +16,8 @@
   .wbdv-modules-section {
     flex-direction: column;
   }
+
+  .wbdv-topic-section {
+    width: 100%;
+  }
 }
