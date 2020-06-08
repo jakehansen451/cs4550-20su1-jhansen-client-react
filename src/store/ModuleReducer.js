@@ -42,10 +42,8 @@ export const moduleReducer = (modules = [], action) => {
     case FIND_MODULE:
       return modules.find(module => module._id === action.moduleId);
     case UPDATE_MODULE:
-      const newModules = [...modules].map(module =>
-          module._id === action.module._id
-              ? action.module : module);
-      return newModules;
+      return [...modules].map(module =>
+          module._id === action.module._id ? action.module : module);
     case DELETE_MODULE:
       return modules.filter(module => module._id !== action.moduleId);
     default:

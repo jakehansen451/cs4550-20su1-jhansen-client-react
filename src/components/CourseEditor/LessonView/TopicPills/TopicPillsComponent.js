@@ -1,24 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {create_topic} from "../../../../store/TopicReducer";
+import {create_topic, set_topics} from "../../../../store/TopicReducer";
+import TopicPillComponent from "./TopicPillComponent";
+import TopicService from '../../../../services/TopicService';
 
 class TopicPillsComponent extends React.Component {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+  }
 
-  topicPill = (topic) => (
-      <li
-          key={topic._id}
-          className="nav-item"
-          onClick={() => this.props.selectTopic(topic)}
-      >
-        <div className={this.props.active.name === topic.name
-            ? "nav-link wbdv-topic-pill active topic-selected"
-            : "nav-link wbdv-topic-pill"
-        }
-        >
-          {topic.name}
-        </div>
-      </li>
-  );
+  createTopic = () => {
+    const topic = {
+      lessonId: this.props.selected_lesson._id,
+      name: 'New Topic',
+    };
+    TopicService.createTopic(this.props.selected_lesson._id, topic)
+    .then(actualTopic => this.props.addTopic(actualTopic));
+  };
+
+  topicPill = (topic, index) => {
+    return (
+        <TopicPillComponent key={index} topic={topic}/>
+    )
+  };
 
   render() {
     return (
@@ -27,10 +30,8 @@ class TopicPillsComponent extends React.Component {
             {this.props.topics.map(this.topicPill)}
             <li className="nav-item">
               <div
-                  className="nav-link topic-link wbdv-icon-link wbdv-topic-add-btn"
-                  onClick={() => this.props.create_topic({
-                    lessonId: this.props.selected_lesson._id,
-                  })}
+                  className="nav-link topic-link wbdv-icon-link wbdv-topic-add-btn wbdv-topic-pill"
+                  onClick={this.createTopic}
               >
                 +
               </div>
@@ -48,7 +49,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  create_topic: (topic) => dispatch(create_topic(topic))
+  addTopic: (topic) => dispatch(create_topic(topic)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPillsComponent);

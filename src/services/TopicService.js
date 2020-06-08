@@ -1,7 +1,7 @@
 const url = 'https://wbdv-generic-server.herokuapp.com/api/jhansen';
 
 const createTopic = (lessonId, topic) =>
-    fetch(`${url}/lessons/${lessonId}`, {
+    fetch(`${url}/lessons/${lessonId}/topics`, {
       method: 'POST',
       body: JSON.stringify(topic),
       headers: { 'content-type': 'application/json' }

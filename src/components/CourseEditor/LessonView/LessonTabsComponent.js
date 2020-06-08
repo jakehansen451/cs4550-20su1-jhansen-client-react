@@ -1,16 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { create_lesson, set_lessons } from "../../../store/LessonReducer";
+import { create_lesson } from "../../../store/LessonReducer";
+import { set_topics } from "../../../store/TopicReducer";
 import { select_lesson } from "../../../store/SelectedLessonReducer";
-import LessonService from "../../../services/LessonService";
+import LessonService from '../../../services/LessonService';
+import TopicService from "../../../services/TopicService";
 import LessonTabComponent from "./LessonTabComponent";
 import Utils from '../../../utils/Utils';
+import TopicPillsComponent from "./TopicPills/TopicPillsComponent";
 
 class LessonTabsComponent extends React.Component {
-  componentDidUpdate(prevProps) {
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.selected_lesson !== prevProps.selected_lesson) {
+      TopicService.findTopicsForLesson(this.props.selected_lesson._id)
+      .then(actualLessons => this.props.loadTopics(actualLessons));
+    }
+
     if (this.props.selected_module !== prevProps.selected_module) {
       LessonService.findLessonsForModule(this.props.selected_module._id)
-      .then(actualLessons => this.props.loadLessons(actualLessons));
+      .then(lessons => {
+        const newSelectedLesson = lessons.length > 0 ? lessons[0] : {};
+        this.props.selectLesson(newSelectedLesson);
+      })
     }
   }
 
@@ -21,7 +33,7 @@ class LessonTabsComponent extends React.Component {
     };
     LessonService.createLesson(this.props.selected_module._id, lesson)
     .then(actualLesson => {
-      this.props.addLesson(this.props.selected_module._id, actualLesson);
+      this.props.addLesson(actualLesson);
     });
   };
 
@@ -47,6 +59,13 @@ class LessonTabsComponent extends React.Component {
               </div>
             </li>
           </ul>
+          {!Utils.isEmpty(this.props.selected_lesson) &&
+              <TopicPillsComponent
+                  topics={this.props.topics.filter(topic =>
+                      topic.lessonId === this.props.selected_lesson._id
+                  )}
+              />
+          }
         </div>
     )
   }
@@ -56,11 +75,12 @@ const mapStateToProps = (state) => ({
   selected_module: state.selected_module,
   lessons: state.lessons,
   selected_lesson: state.selected_lesson,
+  topics: state.topics,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadLessons: (lessons) => dispatch(set_lessons(lessons)),
-  addLesson: (moduleId, lesson) => dispatch(create_lesson(moduleId, lesson)),
+  loadTopics: (topics) => dispatch(set_topics(topics)),
+  addLesson: (lesson) => dispatch(create_lesson(lesson)),
   selectLesson: (lesson) => dispatch(select_lesson(lesson)),
 });
 

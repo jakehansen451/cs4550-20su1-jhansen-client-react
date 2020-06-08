@@ -11,8 +11,8 @@ export const set_lessons = (lessons) => {
   return {type: SET_LESSONS, lessons}
 };
 
-export const create_lesson = (moduleId, lesson) => {
-  return {type: CREATE_LESSON, moduleId, lesson}
+export const create_lesson = (lesson) => {
+  return {type: CREATE_LESSON, lesson}
 };
 
 export const find_lessons_for_module = (moduleId) => {
@@ -43,10 +43,8 @@ export const lessonReducer = (lessons = [], action) => {
     case FIND_LESSON:
       return lessons.find(lesson => lesson._id === action.lessonId);
     case UPDATE_LESSON:
-      const newLessons = [...lessons].map(lesson =>
-          lesson._id === action.lesson._id
-              ? action.lesson : lesson);
-      return newLessons;
+      return [...lessons].map(lesson =>
+          lesson._id === action.lesson._id ? action.lesson : lesson);
     case DELETE_LESSON:
       return lessons.filter(lesson => lesson._id !== action.lessonId);
     default:

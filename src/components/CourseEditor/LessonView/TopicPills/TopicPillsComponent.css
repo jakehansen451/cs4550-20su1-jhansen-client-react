@@ -1,7 +1,13 @@
 .wbdv-topic-pill {
+  font-size: smaller;
+}
+
+.wbdv-topic-pill {
   color: var(--text-color);
 }
 
 .wbdv-topic-pill-list {
   align-items: baseline;
+  border: solid #dee2e6;
+  border-width: 0 1px 1px 1px;
 }

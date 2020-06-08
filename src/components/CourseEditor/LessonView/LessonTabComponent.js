@@ -35,7 +35,8 @@ class LessonTabComponent extends React.Component {
 
   removeLesson = () => {
     LessonService.deleteLesson(this.props.lesson._id)
-    .then(response => this.props.removeLesson(this.props.lesson._id))
+    .then(response => this.props.removeLesson(this.props.lesson._id));
+    this.toggleEditing();
   };
 
   render() {

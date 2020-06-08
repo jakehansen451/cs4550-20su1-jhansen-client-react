@@ -5,8 +5,17 @@ import ModuleService from "../../../services/ModuleService";
 import ModuleRowComponent from './ModuleRow/ModuleRowComponent';
 import '../../../styles.css';
 import './ModuleListComponent.css';
+import LessonService from "../../../services/LessonService";
+import {set_lessons} from "../../../store/LessonReducer";
 
 class ModuleListComponent extends React.Component {
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.selected_module !== prevProps.selected_module) {
+      LessonService.findLessonsForModule(this.props.selected_module._id)
+      .then(actualLessons => this.props.loadLessons(actualLessons));
+    }
+  }
 
   addModule = () => {
     const module = {
@@ -45,6 +54,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  loadLessons: (lessons) => dispatch(set_lessons(lessons)),
   addModule: (module) => dispatch(create_module(module)),
   removeModule: (moduleId) => dispatch(delete_module(moduleId))
 });
