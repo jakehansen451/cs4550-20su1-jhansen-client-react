@@ -1,3 +1,5 @@
+import LessonService from './LessonService';
+
 const url = 'https://wbdv-generic-server.herokuapp.com/api/jhansen';
 
 const createModule = (courseId, module) =>
@@ -28,9 +30,13 @@ const updateModule = (moduleId, newModule) =>
     }).then(response => response.json());
 
 const deleteModule = (moduleId) => {
+  LessonService.findLessonsForModule(moduleId)
+  .then(lessons => lessons.map(lesson =>
+      LessonService.deleteLesson(lesson._id)
+  ));
   return fetch(`${url}/modules/${moduleId}`, {method: 'DELETE'})
   .then(response => response.json())
-}
+};
 
 export default {
   createModule,

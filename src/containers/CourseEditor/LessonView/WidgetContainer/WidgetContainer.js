@@ -1,6 +1,6 @@
 import React from 'react';
 import WidgetListComponent
-  from "../../../../components/CourseEditor/LessonTabs/TopicPills/WidgetList/WidgetListComponent";
+  from "../../../../components/CourseEditor/LessonView/TopicPills/WidgetList/WidgetListComponent";
 import './WidgetContainer.css';
 import connect from "react-redux/es/connect/connect";
 

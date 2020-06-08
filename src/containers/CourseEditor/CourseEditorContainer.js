@@ -5,10 +5,12 @@ import {select_course} from "../../store/SelectedCourseReducer";
 import ModuleService from "../../services/ModuleService";
 import ModuleListComponent from '../../components/CourseEditor/ModuleList/ModuleListComponent';
 import EditorNavbarComponent from '../../components/CourseEditor/EditorNavbar/EditorNavbarComponent';
-import TopicViewContainer from './TopicView/TopicViewContainer';
 import CourseService from '../../services/CourseService';
 import Utils from '../../utils/Utils';
 import './CourseEditorContainer.css';
+import LessonTabsComponent
+  from "../../components/CourseEditor/LessonView/LessonTabsComponent";
+import LessonService from "../../services/LessonService";
 
 const dummyTabs = ['Build', 'Pages', 'Theme', 'Store', 'Apps'];
 
@@ -68,13 +70,7 @@ class CourseEditorContainer extends React.Component {
             />
             </div>
             <div className='wbdv-topic-section'>
-              {<TopicViewContainer
-                  topics={Utils.isEmpty(this.props.selected_lesson)
-                      ? []
-                      : this.props.topics.filter(topic =>
-                          topic.lessonId === this.props.selected_lesson._id)
-                  }
-              />}
+              <LessonTabsComponent />
             </div>
           </div>
         </div>
@@ -82,10 +78,11 @@ class CourseEditorContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  selected_module: state.selected_module,
   selected_course: state.selected_course,
   modules: state.modules,
   selected_lesson: state.selected_lesson,
-  topics: state.topics
+  lessons: state.lessons
 });
 
 const mapDispatchToProps = (dispatch) => ({

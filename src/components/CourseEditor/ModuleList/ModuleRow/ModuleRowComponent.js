@@ -3,10 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faEdit} from "@fortawesome/free-solid-svg-icons";
 import ModuleService from "../../../../services/ModuleService";
 import {select_module} from "../../../../store/SelectedModuleReducer";
-import {
-  delete_module,
-  update_module
-} from "../../../../store/ModuleReducer";
+import {delete_module, update_module} from "../../../../store/ModuleReducer";
 import connect from "react-redux/es/connect/connect";
 
 class ModuleRowComponent extends React.Component {
@@ -15,7 +12,7 @@ class ModuleRowComponent extends React.Component {
     newModuleTitle: this.props.module.name,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state === prevState && this.state.newModuleTitle !== this.props.module.name) {
       this.setState({newModuleTitle: this.props.module.name})
     }
@@ -34,9 +31,9 @@ class ModuleRowComponent extends React.Component {
     this.toggleEditing();
   };
 
-  removeModule = (moduleId) => {
-    ModuleService.deleteModule(moduleId)
-    .then(response => this.props.removeModule(moduleId))
+  removeModule = () => {
+    ModuleService.deleteModule(this.props.module._id)
+    .then(response => this.props.removeModule(this.props.module._id))
   };
 
   render() {
@@ -87,7 +84,7 @@ class ModuleRowComponent extends React.Component {
                 :
                 <button
                     className="wbdv-icon-link wbdv-delete-btn wbdv-btn"
-                    onClick={() => this.removeModule(this.props.module._id)}>
+                    onClick={this.removeModule}>
                   X
                 </button>
             }

@@ -5,12 +5,11 @@
 
 .wbdv-modules-list {
   padding: 0 1rem 1rem 1rem;
-  flex-grow: 1;
 }
 
 .wbdv-topic-section {
   padding: 0 1rem;
-  flex-grow: 3;
+  width: 66.6666%;
 }
 
 @media screen and (max-width: 700px) {
