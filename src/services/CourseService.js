@@ -1,15 +1,15 @@
 import ModuleService from './ModuleService';
-import { url } from '../config';
+import { genericServerUrl } from '../config';
 
 const createCourse = (course) =>
-    fetch(`${url}/courses/`, {
+    fetch(`${genericServerUrl}/courses/`, {
       method: 'POST',
       body: JSON.stringify(course),
       headers: {'content-type': 'application/json'}
     }).then(response => response.json());
 
 const updateCourse = (courseId, course) =>
-    fetch(`${url}/courses/${courseId}`, {
+    fetch(`${genericServerUrl}/courses/${courseId}`, {
       method: 'PUT',
       body: JSON.stringify(course),
       headers: {'content-type': 'application/json'}
@@ -20,16 +20,16 @@ const deleteCourse = (courseId) => {
   .then(modules => modules.map(module =>
     ModuleService.deleteModule(module._id)
   ));
-  return fetch(`${url}/courses/${courseId}`, {method: 'DELETE'})
+  return fetch(`${genericServerUrl}/courses/${courseId}`, {method: 'DELETE'})
   .then(response => response.json());
 };
 
 const findCourseById = (courseId) =>
-    fetch(`${url}/courses/${courseId}`)
+    fetch(`${genericServerUrl}/courses/${courseId}`)
     .then(response => response.json());
 
 const findAllCourses = () =>
-    fetch(`${url}/courses/`)
+    fetch(`${genericServerUrl}/courses/`)
     .then(response => response.json());
 
 export default {

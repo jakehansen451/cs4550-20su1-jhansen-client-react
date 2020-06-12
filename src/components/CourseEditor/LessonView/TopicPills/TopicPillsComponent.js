@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {create_topic} from "../../../../store/TopicReducer";
+import {select_topic} from "../../../../store/SelectedTopicReducer";
 import TopicPillComponent from "./TopicPillComponent";
 import TopicService from '../../../../services/TopicService';
 import WidgetContainer
@@ -9,6 +10,10 @@ import Utils from '../../../../utils/Utils';
 
 class TopicPillsComponent extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.topics !== prevProps.topics) {
+      this.props.selectTopic(this.props.topics.length > 0
+          ? this.props.topics[0] : {});
+    }
   }
 
   createTopic = () => {
@@ -40,7 +45,8 @@ class TopicPillsComponent extends React.Component {
               </div>
             </li>
           </ul>
-          {!Utils.isEmpty(this.props.selected_topic) && <WidgetContainer/>}
+          {!Utils.isEmpty(this.props.selected_topic)
+          && <WidgetContainer/>}
         </div>
     )
   }
@@ -54,6 +60,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addTopic: (topic) => dispatch(create_topic(topic)),
+  selectTopic: (topic) => dispatch(select_topic(topic)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPillsComponent);

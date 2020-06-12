@@ -1,8 +1,8 @@
 import TopicService from './TopicService';
-import { url } from '../config';
+import { genericServerUrl } from '../config';
 
 const createLesson = (moduleId, newLesson) =>
-    fetch(`${url}/modules/${moduleId}/lessons`, {
+    fetch(`${genericServerUrl}/modules/${moduleId}/lessons`, {
       method: 'POST',
       body: JSON.stringify(newLesson),
       headers: {
@@ -12,15 +12,15 @@ const createLesson = (moduleId, newLesson) =>
     .then(response => response.json());
 
 const findLessonsForModule = (moduleId) =>
-    fetch(`${url}/modules/${moduleId}/lessons`)
+    fetch(`${genericServerUrl}/modules/${moduleId}/lessons`)
     .then(response => response.json());
 
 const findLesson = (lessonId) =>
-    fetch(`${url}/lessons/${lessonId}`)
+    fetch(`${genericServerUrl}/lessons/${lessonId}`)
     .then(response => response.json());
 
 const updateLesson = (lessonId, lesson) =>
-    fetch(`${url}/lessons/${lessonId}`, {
+    fetch(`${genericServerUrl}/lessons/${lessonId}`, {
       method: 'PUT',
       body: JSON.stringify(lesson),
       headers: {
@@ -34,7 +34,7 @@ const deleteLesson = (lessonId) => {
   .then(topics => topics.map(topic =>
         TopicService.deleteTopic(topic._id)
   ));
-  return fetch(`${url}/lessons/${lessonId}`, {method: 'DELETE'})
+  return fetch(`${genericServerUrl}/lessons/${lessonId}`, {method: 'DELETE'})
   .then(response => response.json());
 };
 

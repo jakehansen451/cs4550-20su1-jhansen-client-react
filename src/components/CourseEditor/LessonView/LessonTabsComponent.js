@@ -12,17 +12,17 @@ import TopicPillsComponent from "./TopicPills/TopicPillsComponent";
 class LessonTabsComponent extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.selected_lesson !== prevProps.selected_lesson) {
-      TopicService.findTopicsForLesson(this.props.selected_lesson._id)
-      .then(actualLessons => this.props.loadTopics(actualLessons));
-    }
-
     if (this.props.selected_module !== prevProps.selected_module) {
       LessonService.findLessonsForModule(this.props.selected_module._id)
       .then(lessons => {
         const newSelectedLesson = lessons.length > 0 ? lessons[0] : {};
         this.props.selectLesson(newSelectedLesson);
       })
+    }
+
+    if (this.props.selected_lesson !== prevProps.selected_lesson) {
+      TopicService.findTopicsForLesson(this.props.selected_lesson._id)
+      .then(actualLessons => this.props.loadTopics(actualLessons));
     }
   }
 
