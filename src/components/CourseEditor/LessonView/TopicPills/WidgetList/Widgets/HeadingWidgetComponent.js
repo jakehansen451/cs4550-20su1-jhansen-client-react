@@ -1,7 +1,8 @@
 import React from 'react';
+import WidgetFormComponent from "./WidgetFormComponent";
 import '../../../../../../styles.css';
 import './HeadingWidgetComponent.css';
-import WidgetFormComponent from "./WidgetFormComponent";
+import './WidgetStyles.css';
 
 
 export default class HeadingWidgetComponent extends React.Component {
@@ -17,8 +18,8 @@ export default class HeadingWidgetComponent extends React.Component {
             data-parent="#widget-accordion"
         >
           <WidgetFormComponent/>
-          <form className="wbdv-heading-widget-edit">
-            <div className="wbdv-widget-edit-heading">Heading widget</div>
+          <form className="wbdv-widget-edit">
+            <div className="wbdv-widget-type">Heading widget</div>
             <div className="wbdv-widget-edit-row">
               <label className="col-form-label wbdv-widget-input-label" htmlFor="heading-body-input">
                 Heading text:
@@ -32,7 +33,7 @@ export default class HeadingWidgetComponent extends React.Component {
             </div>
           </form>
           <h5>Widget Preview:</h5>
-          <div className="wbdv-heading-widget-preview">
+          <div className="wbdv-widget-preview">
             <h2>Put your heading text here</h2>
           </div>
         </div>

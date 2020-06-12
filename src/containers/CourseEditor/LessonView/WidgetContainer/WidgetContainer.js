@@ -6,13 +6,13 @@ import connect from "react-redux/es/connect/connect";
 
 const fakeWidgets = [
   {type: 'heading', name: 'Widget 1'},
-  {type: 'heading', name: 'Widget 2'}
+  {type: 'paragraph', name: 'Widget 2'}
 ];
 
 class WidgetContainer extends React.Component {
   state = {
     widgets: fakeWidgets,
-    activeWidget: fakeWidgets[0]
+    activeWidget: fakeWidgets[1]
   };
 
   addWidget = () => alert('Pretending to add widget');

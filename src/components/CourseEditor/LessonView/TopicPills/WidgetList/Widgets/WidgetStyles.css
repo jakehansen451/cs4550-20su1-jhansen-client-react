@@ -1,0 +1,53 @@
+.wbdv-widget-input-label {
+  max-width: 33.333333%;
+}
+
+.wbdv-widget-input-field {
+  margin: 0.25rem;
+  width: 100%;
+  max-width: 66.666666%;
+}
+
+.wbdv-widget-edit-row {
+  padding: 0.5rem;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.wbdv-clickable-label {
+  color: var(--text-color);
+}
+
+.wbdv-clickable-label:hover {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.wbdv-widget-body {
+  padding: 0.75rem 1.5rem;
+}
+
+.wbdv-widget-edit {
+  border: 1px solid var(--very-light-grey);
+  border-radius: 0.25rem;
+  background-color: var(--lightest-grey);
+  margin: 0 0 1rem 0;
+}
+
+.wbdv-widget-type {
+  background-color: var(--faded-light-green);
+  padding: 0.5rem;
+  border-radius: 0.125rem;
+  border: solid var(--very-light-grey);
+  border-width: 0 0 1px 0;
+}
+
+.wbdv-widget-preview {
+  border: 1px solid var(--very-light-grey);
+  border-radius: 0.25rem;
+  background-color: var(--lightest-grey);
+  padding: 0.5rem;
+}

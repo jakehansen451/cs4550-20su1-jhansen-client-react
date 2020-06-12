@@ -1,5 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import '../../../../../../styles.css';
+import './WidgetStyles.css';
+import './WidgetFormComponent.css'
 
 class WidgetFormComponent extends React.Component {
   render() {

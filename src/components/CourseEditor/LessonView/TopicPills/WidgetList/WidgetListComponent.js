@@ -63,7 +63,10 @@ const WidgetListComponent = (props) => {
       />;
 
   const createParagraphWidget = (widget) =>
-      <ParagraphWidgetComponent />;
+      <ParagraphWidgetComponent
+          widget={widget}
+          active={props.activeWidget.name === widget.name}
+      />;
 
   return (
       <div className="accordion" id="widget-accordion">
