@@ -1,6 +1,5 @@
 import TopicService from './TopicService';
-
-const url = 'https://wbdv-generic-server.herokuapp.com/api/jhansen';
+import { url } from '../config';
 
 const createLesson = (moduleId, newLesson) =>
     fetch(`${url}/modules/${moduleId}/lessons`, {

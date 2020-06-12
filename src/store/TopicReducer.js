@@ -1,7 +1,7 @@
 // Actions
 export const SET_TOPICS = 'SET_TOPICS';
 export const CREATE_TOPIC = 'CREATE_TOPIC';
-export const FIND_TOPICS_FOR_COURSE = 'FIND_TOPICS_FOR_COURSE';
+export const FIND_TOPICS_FOR_LESSON = 'FIND_TOPICS_FOR_LESSON';
 export const FIND_TOPIC = 'FIND_TOPIC';
 export const UPDATE_TOPIC = 'UPDATE_TOPIC';
 export const DELETE_TOPIC = 'DELETE_TOPIC';
@@ -16,7 +16,7 @@ export const create_topic = (topic) => {
 };
 
 export const find_topics_for_lesson = (lessonId) => {
-  return {type: FIND_TOPICS_FOR_COURSE, lessonId}
+  return {type: FIND_TOPICS_FOR_LESSON, lessonId}
 };
 
 export const find_topic = (topicId) => {
@@ -38,7 +38,7 @@ export const topicReducer = (topics = [], action) => {
       return action.topics;
     case CREATE_TOPIC:
       return [...topics, action.topic];
-    case FIND_TOPICS_FOR_COURSE:
+    case FIND_TOPICS_FOR_LESSON:
       return topics.filter(topic => topic.lessonId === action.lessonId);
     case FIND_TOPIC:
       return topics.find(topic => topic._id === action.topicId);

@@ -5,6 +5,8 @@ import { lessonReducer} from "./LessonReducer";
 import { selectedLessonReducer } from "./SelectedLessonReducer";
 import { topicReducer } from "./TopicReducer";
 import { selectedTopicReducer } from "./SelectedTopicReducer";
+import { widgetReducer } from "./WidgetReducer";
+import { selectedWidgetReducer } from "./SelectedWidgetReducer";
 
 export const rootReducer = (state = {}, action) => {
   return {
@@ -15,5 +17,7 @@ export const rootReducer = (state = {}, action) => {
     selected_lesson: selectedLessonReducer(state.selected_lesson, action),
     topics: topicReducer(state.topics, action),
     selected_topic: selectedTopicReducer(state.selected_topic, action),
+    widgets: widgetReducer(state.widgets, action),
+    selected_widget: selectedWidgetReducer(state.selected_widget, action),
   }
 };

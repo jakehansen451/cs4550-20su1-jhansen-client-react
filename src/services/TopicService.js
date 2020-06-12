@@ -1,4 +1,4 @@
-const url = 'https://wbdv-generic-server.herokuapp.com/api/jhansen';
+import { url } from '../config';
 
 const createTopic = (lessonId, topic) =>
     fetch(`${url}/lessons/${lessonId}/topics`, {
