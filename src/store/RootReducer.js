@@ -7,6 +7,7 @@ import { topicReducer } from "./TopicReducer";
 import { selectedTopicReducer } from "./SelectedTopicReducer";
 import { widgetReducer } from "./WidgetReducer";
 import { selectedWidgetReducer } from "./SelectedWidgetReducer";
+import { widgetPreviewReducer } from "./WidgetPreviewReducer";
 
 export const rootReducer = (state = {}, action) => {
   return {
@@ -19,5 +20,6 @@ export const rootReducer = (state = {}, action) => {
     selected_topic: selectedTopicReducer(state.selected_topic, action),
     widgets: widgetReducer(state.widgets, action),
     selected_widget: selectedWidgetReducer(state.selected_widget, action),
+    widget_preview: widgetPreviewReducer(state.widget_preview, action),
   }
 };

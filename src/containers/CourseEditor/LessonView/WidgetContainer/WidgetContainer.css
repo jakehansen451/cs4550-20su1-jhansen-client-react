@@ -14,3 +14,11 @@
   font-size: x-large;
   margin: 5px;
 }
+
+.wbdv-widget-preview-label {
+  font-size: medium;
+}
+
+.wbdv-widget-preview-toggle {
+  font-size: large;
+}

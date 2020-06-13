@@ -3,37 +3,49 @@ import WidgetFormComponent from "./WidgetFormComponent";
 import '../../../../../../styles.css';
 import './HeadingWidgetComponent.css';
 import './WidgetStyles.css';
+import connect from "react-redux/es/connect/connect";
 
-
-export default class HeadingWidgetComponent extends React.Component {
+class HeadingWidgetComponent extends React.Component {
 
   render() {
     const name = this.props.widget.name;
-    return(
+    return (
         this.props.active &&
         <div
             id={name}
             className="wbdv-widget-body"
         >
-          <WidgetFormComponent/>
-          <form className="wbdv-widget-edit">
-            <div className="wbdv-widget-type">Heading widget</div>
-            <div className="wbdv-widget-edit-row">
-              <label className="col-form-label wbdv-widget-input-label" htmlFor="heading-body-input">
-                Heading text:
-              </label>
-              <input
-                  className="wbdv-widget-input-field wbdv-field col"
-                  id="heading-body-input"
-                  type="text"
-                  placeholder="Put your heading text here"
-              />
-            </div>
-          </form>
+          {!this.props.widget_preview &&
+          <div>
+            <WidgetFormComponent/>
+            <form className="wbdv-widget-edit">
+              <div className="wbdv-widget-type">Heading widget</div>
+              <div className="wbdv-widget-edit-row">
+                <label className="col-form-label wbdv-widget-input-label"
+                       htmlFor="heading-body-input">
+                  Heading text:
+                </label>
+                <input
+                    className="wbdv-widget-input-field wbdv-field col"
+                    id="heading-body-input"
+                    type="text"
+                    placeholder="Put your heading text here"
+                />
+              </div>
+            </form>
+          </div>
+          }
           <h5>Widget Preview:</h5>
           <div className="wbdv-widget-preview">
             <h2>Put your heading text here</h2>
           </div>
         </div>
-    )};
+    )
+  };
 }
+
+const mapStateToProps = (state) => ({
+  widget_preview: state.widget_preview,
+});
+
+export default connect(mapStateToProps, null)(HeadingWidgetComponent);
