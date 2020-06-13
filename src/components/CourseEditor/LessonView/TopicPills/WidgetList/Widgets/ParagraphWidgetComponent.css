@@ -6,3 +6,8 @@
 .wbdv-paragraph-input-wrapper {
   padding: 0.5rem;
 }
+
+.wbdv-paragraph-preview {
+  white-space: pre-wrap;
+  margin-bottom: 0;
+}

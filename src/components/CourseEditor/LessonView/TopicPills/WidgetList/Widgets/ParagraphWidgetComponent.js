@@ -4,8 +4,28 @@ import WidgetFormComponent from "./WidgetFormComponent";
 import '../../../../../../styles.css';
 import './WidgetStyles.css';
 import './ParagraphWidgetComponent.css';
+import WidgetService from "../../../../../../services/WidgetService";
 
 class ParagraphWidgetComponent extends React.Component {
+  node = React.createRef();
+
+  state = {
+    text: this.props.widget.text || 'Paragraph text',
+  };
+
+  componentDidUpdate() {
+    if (this.node &&
+        this.node.current &&
+        this.node.current.innerText !== this.state.text) {
+      this.node.current.innerText = this.state.text;
+    }
+  }
+
+  saveText = () => {
+    WidgetService.updateWidget(this.props.widget._id,
+        {...this.props.widget, text: this.state.text});
+  };
+
   render() {
     const name = this.props.widget.name;
     return (
@@ -17,24 +37,26 @@ class ParagraphWidgetComponent extends React.Component {
           {!this.props.widget_preview &&
           <div>
             <WidgetFormComponent/>
-            < form className="wbdv-widget-edit">
+            <form className="wbdv-widget-edit">
               <div className="wbdv-widget-type">Paragraph widget</div>
               <div className='wbdv-paragraph-input-wrapper'>
                 <div
-                    contentEditable={true}
+                    contentEditable
+                    ref={this.node}
                     className="wbdv-paragraph-input-field wbdv-field col"
-                    id="paragraph-body-input"
                     type="text"
-                    placeholder="Put your paragraph text here"
+                    onInput={(e) => this.setState(
+                        {text: e.target.innerText})}
+                    onBlur={this.saveText}
                 />
               </div>
             </form>
+            <h4>Widget Preview:</h4>
           </div>
           }
-          <h5>Widget Preview:</h5>
           <div className="wbdv-widget-preview">
-            <p>
-              Paragraph text
+            <p className='wbdv-paragraph-preview'>
+              {this.state.text}
             </p>
           </div>
         </div>
