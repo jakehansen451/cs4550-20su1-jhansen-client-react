@@ -11,9 +11,7 @@ export default class ParagraphWidgetComponent extends React.Component {
         this.props.active &&
             <div
                 id={name}
-                className="collapse show wbdv-widget-body"
-                aria-labelledby={name.concat('-paragraph')}
-                data-parent="#widget-accordion"
+                className="wbdv-widget-body"
             >
               <WidgetFormComponent/>
               <form className="wbdv-widget-edit">

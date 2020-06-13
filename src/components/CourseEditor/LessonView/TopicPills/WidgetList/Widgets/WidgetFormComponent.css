@@ -1,17 +1,3 @@
-.wbdv-widget-input-label {
-  max-width: 33.333333%;
-}
-
-.wbdv-widget-input-field {
-  width: 100%;
-  max-width: 66.666666%;
-}
-
-.wbdv-widget-edit-row {
-  padding: 0.5rem;
-  width: 100%;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 0;
+.wbdv-widget-form {
+  margin-bottom: 0.5rem;
 }

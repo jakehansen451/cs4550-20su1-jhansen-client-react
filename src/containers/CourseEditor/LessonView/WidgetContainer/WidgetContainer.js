@@ -3,10 +3,13 @@ import WidgetListComponent
   from "../../../../components/CourseEditor/LessonView/TopicPills/WidgetList/WidgetListComponent";
 import './WidgetContainer.css';
 import connect from "react-redux/es/connect/connect";
+import WidgetService from "../../../../services/WidgetService";
+import {create_widget} from "../../../../store/WidgetReducer";
+import Utils from "../../../../utils/Utils";
 
 const fakeWidgets = [
-  {type: 'heading', name: 'Widget 1'},
-  {type: 'paragraph', name: 'Widget 2'}
+  {type: 'HEADING', name: 'Widget 1'},
+  {type: 'PARAGRAPH', name: 'Widget 2'}
 ];
 
 class WidgetContainer extends React.Component {
@@ -15,7 +18,21 @@ class WidgetContainer extends React.Component {
     activeWidget: fakeWidgets[1]
   };
 
-  addWidget = () => alert('Pretending to add widget');
+  addWidget = () => {
+    if (!Utils.isEmpty(this.props.selected_topic)) {
+      WidgetService.createWidget(this.props.selected_topic._id,
+          {
+            name: 'New Widget',
+            type: 'HEADING',
+            topicId: this.props.selected_topic._id,
+          })
+      .then(newWidget => {
+        console.log('New widget');
+        console.log(newWidget);
+        this.props.addWidget(newWidget)
+      })
+    }
+  };
 
   render() {
     return(
@@ -30,8 +47,8 @@ class WidgetContainer extends React.Component {
             </button>
           </div>
           <WidgetListComponent
-              widgets={this.state.widgets}
-              activeWidget={this.state.activeWidget}
+              widgets={this.props.widgets}
+              activeWidget={this.props.selected_widget}
           />
         </div>
     )
@@ -39,11 +56,13 @@ class WidgetContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  selected_topic: state.selected_topic,
+  widgets: state.widgets,
+  selected_widget: state.selected_widget,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  addWidget: (widget) => dispatch(create_widget(widget)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetContainer);

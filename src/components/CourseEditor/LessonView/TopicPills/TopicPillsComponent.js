@@ -7,12 +7,24 @@ import TopicService from '../../../../services/TopicService';
 import WidgetContainer
   from "../../../../containers/CourseEditor/LessonView/WidgetContainer/WidgetContainer";
 import Utils from '../../../../utils/Utils';
+import WidgetService from "../../../../services/WidgetService";
+import {set_widgets} from "../../../../store/WidgetReducer";
 
 class TopicPillsComponent extends React.Component {
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.topics !== prevProps.topics) {
       this.props.selectTopic(this.props.topics.length > 0
           ? this.props.topics[0] : {});
+    }
+
+    if (!Utils.isEmpty(this.props.selected_topic)
+        && this.props.selected_topic !== prevProps.selected_topic) {
+      WidgetService.findWidgetsForTopic(this.props.selected_topic._id)
+      .then(actualWidgets => {
+        console.log(actualWidgets);
+        this.props.setWidgets(actualWidgets)
+      })
     }
   }
 
@@ -32,6 +44,7 @@ class TopicPillsComponent extends React.Component {
   };
 
   render() {
+    console.log(this.props.widgets);
     return (
         <div>
           <ul className="nav nav-tabs topic-navbar wbdv-topic-pill-list">
@@ -46,7 +59,10 @@ class TopicPillsComponent extends React.Component {
             </li>
           </ul>
           {!Utils.isEmpty(this.props.selected_topic)
-          && <WidgetContainer/>}
+          && <WidgetContainer
+              widgets={this.props.widgets.filter((widget) =>
+                  widget.topicId === this.props.selected_topic._id)}
+          />}
         </div>
     )
   }
@@ -55,12 +71,14 @@ class TopicPillsComponent extends React.Component {
 
 const mapStateToProps = (state) => ({
   selected_topic: state.selected_topic,
-  selected_lesson: state.selected_lesson
+  selected_lesson: state.selected_lesson,
+  widgets: state.widgets,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addTopic: (topic) => dispatch(create_topic(topic)),
   selectTopic: (topic) => dispatch(select_topic(topic)),
+  setWidgets: (widgets) => dispatch(set_widgets(widgets)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPillsComponent);

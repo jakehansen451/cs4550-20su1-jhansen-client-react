@@ -7,7 +7,7 @@ import './WidgetFormComponent.css'
 class WidgetFormComponent extends React.Component {
   render() {
     return (
-        <form>
+        <form className='wbdv-widget-form'>
           <div className="form-group wbdv-widget-edit-row">
             <label className="col-form-label wbdv-widget-input-label" htmlFor="widget-name-input">
               Widget name:

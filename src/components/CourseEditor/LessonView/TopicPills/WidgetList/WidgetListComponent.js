@@ -1,16 +1,26 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import '../../../../../styles.css';
 import './WidgetListComponent.css';
 import HeadingWidgetComponent from "./Widgets/HeadingWidgetComponent";
 import ParagraphWidgetComponent from "./Widgets/ParagraphWidgetComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
+import {select_widget} from "../../../../../store/SelectedWidgetReducer";
 
-const WidgetListComponent = (props) => {
+class WidgetListComponent extends React.Component {
+  componentDidUpdate() {
+    console.log(this.props);
+  }
 
-  const createWidget = (widget, index) => {
+  createWidget = (widget, index) => {
     return (
-        <div className="card" key={index}>
+        <div
+            className="card"
+            key={index}
+            onClick={() => this.props.selectWidget(
+                this.props.selected_widget === widget ? {} : widget)}
+        >
           <div
               className="card-header wbdv-widget-heading-bar"
               id={widget.name.concat('-heading')}
@@ -42,37 +52,46 @@ const WidgetListComponent = (props) => {
               </button>
             </div>
           </div>
-          {selectWidget(widget)}
+          {this.widgetType(widget)}
         </div>);
   };
 
-  const selectWidget = (widget) => {
-    if (widget.type === 'heading') {
-      return createHeadingWidget(widget);
-    } else if (widget.type === 'paragraph') {
-      return createParagraphWidget(widget);
-    } else if (widget.type === 'youtube') {
-
+  widgetType = (widget) => {
+    if (widget.type === 'HEADING') {
+      return this.createHeadingWidget(widget);
+    } else if (widget.type === 'PARAGRAPH') {
+      return this.createParagraphWidget(widget);
     }
   };
 
-  const createHeadingWidget = (widget) =>
+  createHeadingWidget = (widget) =>
       <HeadingWidgetComponent
           widget={widget}
-          active={props.activeWidget.name === widget.name}
+          active={this.props.selected_widget.name === widget.name}
       />;
 
-  const createParagraphWidget = (widget) =>
+  createParagraphWidget = (widget) =>
       <ParagraphWidgetComponent
           widget={widget}
-          active={props.activeWidget.name === widget.name}
+          active={this.props.selected_widget.name === widget.name}
       />;
 
-  return (
-      <div className="accordion" id="widget-accordion">
-        {props.widgets.map(createWidget)}
-      </div>
-  );
-};
+  render() {
+    return (
+        <div className="accordion" id="widget-accordion">
+          {this.props.widgets.map(this.createWidget)}
+        </div>
+    )
+  }
+}
 
-export default WidgetListComponent;
+const mapStateToProps = (state) => ({
+  selected_widget: state.selected_widget,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  selectWidget: (widget) => dispatch(select_widget(widget)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+    WidgetListComponent);
