@@ -7,16 +7,7 @@ import WidgetService from "../../../../services/WidgetService";
 import {create_widget} from "../../../../store/WidgetReducer";
 import Utils from "../../../../utils/Utils";
 
-const fakeWidgets = [
-  {type: 'HEADING', name: 'Widget 1'},
-  {type: 'PARAGRAPH', name: 'Widget 2'}
-];
-
 class WidgetContainer extends React.Component {
-  state = {
-    widgets: fakeWidgets,
-    activeWidget: fakeWidgets[1]
-  };
 
   addWidget = () => {
     if (!Utils.isEmpty(this.props.selected_topic)) {
@@ -26,11 +17,7 @@ class WidgetContainer extends React.Component {
             type: 'HEADING',
             topicId: this.props.selected_topic._id,
           })
-      .then(newWidget => {
-        console.log('New widget');
-        console.log(newWidget);
-        this.props.addWidget(newWidget)
-      })
+      .then(newWidget => this.props.addWidget(newWidget))
     }
   };
 
@@ -48,7 +35,6 @@ class WidgetContainer extends React.Component {
           </div>
           <WidgetListComponent
               widgets={this.props.widgets}
-              activeWidget={this.props.selected_widget}
           />
         </div>
     )
@@ -57,7 +43,6 @@ class WidgetContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   selected_topic: state.selected_topic,
-  widgets: state.widgets,
   selected_widget: state.selected_widget,
 });
 

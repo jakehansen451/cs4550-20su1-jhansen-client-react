@@ -7,46 +7,55 @@ import ParagraphWidgetComponent from "./Widgets/ParagraphWidgetComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 import {select_widget} from "../../../../../store/SelectedWidgetReducer";
+import WidgetService from "../../../../../services/WidgetService";
+import {delete_widget, set_widgets} from "../../../../../store/WidgetReducer";
 
 class WidgetListComponent extends React.Component {
-  componentDidUpdate() {
-    console.log(this.props);
-  }
+  deleteWidget = (widget) => {
+    WidgetService.deleteWidget(widget._id)
+    .then(response => this.props.deleteWidget(widget._id));
+  };
+
+  reorderUp = (widget) => WidgetService.reorderUp(widget._id)
+  .then(newWidgets => this.props.setWidgets(newWidgets));
+
+  reorderDown = (widget) => WidgetService.reorderDown(widget._id)
+  .then(newWidgets => this.props.setWidgets(newWidgets));
 
   createWidget = (widget, index) => {
     return (
         <div
             className="card"
             key={index}
-            onClick={() => this.props.selectWidget(
-                this.props.selected_widget === widget ? {} : widget)}
         >
           <div
               className="card-header wbdv-widget-heading-bar"
-              id={widget.name.concat('-heading')}
+              onClick={() => this.props.selectWidget(
+                  this.props.selected_widget._id === widget._id ? {} : widget)}
           >
-            <button
-                className="btn btn-link wbdv-clickable-label"
-                type="button"
-                data-toggle="collapse"
-                data-target={'#'.concat(widget.name)}
-                aria-expanded="true"
-                aria-controls={widget.name}
-            >
-              {widget.name}
-            </button>
+            {widget.name}
             <div>
               <div className="btn-group">
-                <button className="btn btn-light">
+                {widget.widgetOrder !== 0 &&
+                <button
+                    className="btn btn-light"
+                    onClick={() => this.reorderUp(widget)}
+                >
                   <FontAwesomeIcon icon={faArrowUp}/>
                 </button>
-                <button className="btn btn-light">
+                }
+                {widget.widgetOrder !== this.props.widgets.length - 1 &&
+                <button
+                    className="btn btn-light"
+                    onClick={() => this.reorderDown(widget)}
+                >
                   <FontAwesomeIcon icon={faArrowDown}/>
                 </button>
+                }
               </div>
               <button
                   className="wbdv-icon-link wbdv-btn wbdv-delete-btn"
-                  onClick={() => alert('Pretending to delete widget')}
+                  onClick={() => this.deleteWidget(widget)}
               >
                 X
               </button>
@@ -67,13 +76,13 @@ class WidgetListComponent extends React.Component {
   createHeadingWidget = (widget) =>
       <HeadingWidgetComponent
           widget={widget}
-          active={this.props.selected_widget.name === widget.name}
+          active={this.props.selected_widget._id === widget._id}
       />;
 
   createParagraphWidget = (widget) =>
       <ParagraphWidgetComponent
           widget={widget}
-          active={this.props.selected_widget.name === widget.name}
+          active={this.props.selected_widget._id === widget._id}
       />;
 
   render() {
@@ -91,6 +100,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   selectWidget: (widget) => dispatch(select_widget(widget)),
+  deleteWidget: (widget) => dispatch(delete_widget(widget)),
+  setWidgets: (widgets) => dispatch(set_widgets(widgets)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(

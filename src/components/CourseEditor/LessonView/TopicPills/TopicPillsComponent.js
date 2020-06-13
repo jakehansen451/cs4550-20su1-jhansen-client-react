@@ -21,10 +21,7 @@ class TopicPillsComponent extends React.Component {
     if (!Utils.isEmpty(this.props.selected_topic)
         && this.props.selected_topic !== prevProps.selected_topic) {
       WidgetService.findWidgetsForTopic(this.props.selected_topic._id)
-      .then(actualWidgets => {
-        console.log(actualWidgets);
-        this.props.setWidgets(actualWidgets)
-      })
+      .then(actualWidgets => this.props.setWidgets(actualWidgets))
     }
   }
 
@@ -44,7 +41,6 @@ class TopicPillsComponent extends React.Component {
   };
 
   render() {
-    console.log(this.props.widgets);
     return (
         <div>
           <ul className="nav nav-tabs topic-navbar wbdv-topic-pill-list">
