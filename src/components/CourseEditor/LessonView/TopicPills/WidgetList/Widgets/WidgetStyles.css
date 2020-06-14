@@ -51,3 +51,21 @@
   background-color: var(--lightest-grey);
   padding: 0.5rem;
 }
+
+@media screen and (max-width: 790px) {
+  .wbdv-widget-edit-row {
+    flex-direction: column;
+  }
+
+  .wbdv-widget-input-field {
+    flex-basis: 0;
+  }
+
+  .wbdv-widget-input-label {
+    max-width: 100%;
+  }
+
+  .wbdv-widget-input-field {
+    max-width: 100%;
+  }
+}
