@@ -56,14 +56,14 @@ class TopicPillsComponent extends React.Component {
           </ul>
           {!Utils.isEmpty(this.props.selected_topic)
           && <WidgetContainer
-              widgets={this.props.widgets.filter((widget) =>
-                  widget.topicId === this.props.selected_topic._id)}
+              widgets={this.props.widgets
+                  ? this.props.widgets.filter((widget) =>
+                      widget.topicId === this.props.selected_topic._id) : []}
           />}
         </div>
     )
   }
 }
-
 
 const mapStateToProps = (state) => ({
   selected_topic: state.selected_topic,
@@ -77,4 +77,5 @@ const mapDispatchToProps = (dispatch) => ({
   setWidgets: (widgets) => dispatch(set_widgets(widgets)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicPillsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(
+    TopicPillsComponent);
